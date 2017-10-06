@@ -1,0 +1,54 @@
+.toolbar {
+	position      : absolute;
+	background    : #FFFFFF;
+	z-index       : 2;
+	box-shadow    : 0 0 15px -4px #BBBBBB;
+	border-radius : 5px 5px 0 0;
+	color         : #000000;
+	font-size     : 24px;
+
+	::after {
+		content      : "";
+		position     : absolute;
+		bottom       : -5px;
+		left         : 50%;
+		margin-left  : -5px;
+		border-top   : 5px solid #444444;
+		border-right : 5px solid transparent;
+		border-left  : 5px solid transparent;
+	}
+
+	.toolbar-icons {
+		list-style : none;
+		margin     : 0;
+		padding    : 0;
+
+		li {
+			text-align    : center;
+			min-width     : 25px;
+			border-bottom : 2px #000000 solid;
+			display       : inline-block;
+			font-weight   : bold;
+			font-size     : 14px;
+			cursor        : pointer;
+			padding       : 5px;
+
+			.bold {
+				font-family : Arial;
+			}
+
+			.italic {
+				font-style  : italic;
+				font-family : "Times New Roman";
+			}
+
+			span {
+				height : 21px;
+			}
+		}
+		li:hover {
+			opacity : 0.3;
+		}
+	}
+
+}

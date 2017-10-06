@@ -1,0 +1,83 @@
+@import url(https://fonts.googleapis.com/css?family=Playfair+Display:900|Source+Sans+Pro|Heebo:900);.axe-editable_content {
+  left: 50px;
+  width: 600px;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 18px;
+  letter-spacing: 1px; }
+
+.axe-editable_content h1 {
+  font-family: 'Heebo', sans-serif;
+  font-weight: 900;
+  font-size: 80px;
+  margin: 0 0 10px 0;
+  color: #4C7A50;
+  border-bottom: 2px solid #BEFFB7;
+  letter-spacing: -2px;
+  line-height: 80px; }
+
+.axe-editable_content h2 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-size: 42px;
+  margin: 0 0 5px 0;
+  color: #345437; }
+
+.axe-editable_content h3 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-size: 35px;
+  margin: 0 0 3px 0; }
+
+.axe-editable_content div.paragraph {
+  margin-left: 20px; }
+
+.axe-editable_content pre:not(.code-line) {
+  counter-reset: code-line;
+  margin: 20px;
+  font-size: 12px;
+  letter-spacing: 0px;
+  border-radius: .25em;
+  padding: 10px 10px 10px 5px;
+  background-color: #FFFFFF;
+  box-shadow: 0.1em 0.1em 0.5em rgba(0, 0, 0, 0.45); }
+
+.axe-editable_content pre:not(.code-line) > .code-line {
+  line-height: 1.2rem;
+  margin: 0;
+  display: block;
+  padding-right: 32px; }
+
+.axe-editable_content pre:not(.code-line) > .code-line > div {
+  display: inline-block; }
+
+.axe-editable_content pre:not(.code-line) > .code-line::before {
+  counter-increment: code-line;
+  content: counter(code-line);
+  display: inline-block;
+  border-right: 1px solid #DDDDDD;
+  padding: 0 .5em;
+  margin-right: .5em;
+  width: 20px;
+  text-align: right;
+  vertical-align: top;
+  color: #666666; }
+
+.axe-editable_content blockquote {
+  background: #F9F9F9;
+  border-left: 10px solid #CCCCCC;
+  margin: 1.5em 10px;
+  padding: 0.5em 47px;
+  line-height: 20px;
+  position: relative;
+  min-height: 20px; }
+
+.axe-editable_content blockquote::before {
+  color: #CC8D9F;
+  content: "\201C";
+  font-size: 4em;
+  line-height: 0.8em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+  position: absolute;
+  left: 10px;
+  top: 5px; }

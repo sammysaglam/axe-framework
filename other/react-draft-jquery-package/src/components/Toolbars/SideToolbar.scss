@@ -1,0 +1,16 @@
+.side-toolbar {
+	position    : absolute;
+	left        : -25px;
+	font-size   : 28px;
+	font-family : "Times New Roman";
+	font-weight : bold;
+	color       : #AAAAAA;
+
+	.block-settings {
+		position : absolute;
+		top      : -41px;
+		left     : -27px;
+		white-space: nowrap;
+	}
+
+}

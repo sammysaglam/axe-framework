@@ -1,0 +1,34 @@
+{
+	"name": "axe-adapter-editable-content",
+	"version": "1.0.0",
+	"author": "Sammy Saglam <sami@saglam.tk>",
+	"license": "MIT",
+	"scripts": {
+		"build-watch": "webpack --progress --watch",
+		"build-dev": "webpack --progress",
+		"build": "webpack -p"
+	},
+	"dependencies": {
+		"css-loader": "^0.28.0",
+		"draft-convert": "github:sammysaglam/draft-convert#build",
+		"draft-extend": "^1.5.0",
+		"draft-js": "^0.10.1",
+		"editable-content": "^1.0.5",
+		"extract-text-webpack-plugin": "^2.1.0",
+		"jquery": "^3.2.1",
+		"minified": "^1.0.1",
+		"node-sass": "^4.5.2",
+		"react": "^15.5.4",
+		"react-dom": "^15.5.4",
+		"sass-loader": "^6.0.3",
+		"uglifyjs-webpack-plugin": "^0.4.3",
+		"url-loader": "^0.5.8"
+	},
+	"devDependencies": {
+		"babel-core": "^6.24.1",
+		"babel-loader": "^6.4.1",
+		"babel-preset-es2015": "^6.24.1",
+		"babel-preset-react": "^6.24.1",
+		"webpack": "^2.4.1"
+	}
+}

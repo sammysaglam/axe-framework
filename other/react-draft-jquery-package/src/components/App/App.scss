@@ -1,0 +1,13 @@
+.DraftEditor-root {
+	outline : 1px solid #CC806B;
+}
+
+.editable_content {
+	position : relative;
+	left     : 50px;
+	width    : 300px;
+}
+
+@import '../Toolbars/Toolbar';
+@import '../Toolbars/InlineToolbar';
+@import '../Toolbars/SideToolbar';
