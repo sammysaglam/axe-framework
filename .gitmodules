@@ -1,25 +1,15 @@
 [submodule "modules/Website/modules/TableOfContents/views/_table-of-contents-package"]
 	path = modules/Website/modules/TableOfContents/views/_table-of-contents-package
 	url = git@github.com:sammysaglam/table-of-contents.git
-	branch = master
-	ignore = dirty
-[submodule "modules/Website/modules/EditableContent/views/_editable-content-package"]
+[submodule "modules/website/modules/EditableContent/views/_editable-content-package"]
 	path = modules/website/modules/EditableContent/views/_editable-content-package
-	url = https://github.com/sammysaglam/editable-content
-	branch = master
-    ignore = dirty
-[submodule "modules/Website/modules/DesignPackage/views/_design-package-"]
-	path = modules/Website/modules/DesignPackage/views/_design-package-
-	url = https://github.com/sammysaglam/design-package
-	branch = master
-    ignore = dirty
+	url = git@github.com:sammysaglam/editable-content.git
+[submodule "modules/Website/modules/DesignPackage/views/_design-package"]
+	path = modules/Website/modules/DesignPackage/views/_design-package
+	url = git@github.com:sammysaglam/design-package.git
 [submodule "modules/Auth/views/_react-login-panel-package"]
 	path = modules/Auth/views/_react-login-panel-package
 	url = git@github.com:sammysaglam/react-login-panel.git
-	branch = master
-    ignore = dirty
 [submodule "modules/Website/modules/Comment/views/_axe-comments-package"]
 	path = modules/Website/modules/Comment/views/_axe-comments-package
-	url = https://github.com/sammysaglam/axe-comments
-	branch = master
-    ignore = dirty
+	url = git@github.com:sammysaglam/axe-comments.git
