@@ -1,15 +1,20 @@
 [submodule "modules/Website/modules/TableOfContents/views/_table-of-contents-package"]
 	path = modules/Website/modules/TableOfContents/views/_table-of-contents-package
 	url = git@github.com:sammysaglam/table-of-contents.git
+	ignore = dirty
 [submodule "modules/website/modules/EditableContent/views/_editable-content-package"]
 	path = modules/website/modules/EditableContent/views/_editable-content-package
 	url = git@github.com:sammysaglam/editable-content.git
+	ignore = dirty
 [submodule "modules/Website/modules/DesignPackage/views/_design-package"]
 	path = modules/Website/modules/DesignPackage/views/_design-package
 	url = git@github.com:sammysaglam/design-package.git
+	ignore = dirty
 [submodule "modules/Auth/views/_react-login-panel-package"]
 	path = modules/Auth/views/_react-login-panel-package
 	url = git@github.com:sammysaglam/react-login-panel.git
+	ignore = dirty
 [submodule "modules/Website/modules/Comment/views/_axe-comments-package"]
 	path = modules/Website/modules/Comment/views/_axe-comments-package
 	url = git@github.com:sammysaglam/axe-comments.git
+	ignore = dirty
