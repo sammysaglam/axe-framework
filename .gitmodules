@@ -2,8 +2,8 @@
 	path = modules/Website/modules/TableOfContents/views/_table-of-contents-package
 	url = https://github.com/sammysaglam/table-of-contents
 	ignore = dirty
-[submodule "modules/website/modules/EditableContent/views/_editable-content-package"]
-	path = modules/website/modules/EditableContent/views/_editable-content-package
+[submodule "modules/Website/modules/EditableContent/views/_editable-content-package"]
+	path = modules/Website/modules/EditableContent/views/_editable-content-package
 	url = https://github.com/sammysaglam/editable-content
 	ignore = dirty
 [submodule "modules/Website/modules/DesignPackage/views/_design-package"]
