@@ -1,0 +1,14 @@
+{
+	"name": "axe-framework",
+	"version": "1.0.0",
+	"repository": "https://github.com/sammysaglam/axe-framework",
+	"author": "Sammy Saglam <sami@saglam.tk>",
+	"license": "MIT",
+	"private": true,
+	"scripts":{
+		"postinstall":"./node_modules/.bin/lerna bootstrap --hoist"
+	},
+	"devDependencies": {
+		"lerna": "^2.8.0"
+	}
+}
