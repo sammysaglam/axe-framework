@@ -11,6 +11,11 @@ $RECYCLE.BIN/
 # PhpStorm .idea
 .idea/
 
+# npm files
+yarn.lock
+package-lock.json
+node_modules
+
 # Windows Installer files
 *.cab
 *.msi
