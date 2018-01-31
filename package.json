@@ -1,14 +1,21 @@
 {
-	"name":"axe-framework" ,
-	"version":"1.0.0" ,
-	"repository":"https://github.com/sammysaglam/axe-framework" ,
-	"author":"Sammy Saglam <sami@saglam.tk>" ,
-	"license":"MIT" ,
-	"private":true ,
-	"scripts":{
-		"postinstall":"./node_modules/.bin/lerna bootstrap --hoist"
-	} ,
-	"devDependencies":{
-		"lerna":"^2.8.0"
+	"name": "axe-framework",
+	"version": "1.0.0",
+	"repository": "https://github.com/sammysaglam/axe-framework",
+	"author": "Sammy Saglam <sami@saglam.tk>",
+	"license": "MIT",
+	"private": true,
+	"scripts": {
+		"clean": "./node_modules/.bin/lerna exec -- rm -rf node_modules yarn.lock package-lock.json && ./node_modules/.bin/lerna clean --yes && rm -rf node_modules yarn.lock package-lock.json",
+		"lint": "./node_modules/.bin/eslint .",
+		"dev": "npm run dev -prefix docs",
+		"postinstall": "./node_modules/.bin/lerna bootstrap",
+		"publish":"./node_modules/.bin/lerna exec -- npm run build && ./node_modules/.bin/lerna publish --skip-git"
+	},
+	"devDependencies": {
+		"eslint": "^4.13.0",
+		"eslint-plugin-react": "^7.5.1",
+		"eslint-sammy-preset": "^1.1.8",
+		"lerna": "^2.8.0"
 	}
 }

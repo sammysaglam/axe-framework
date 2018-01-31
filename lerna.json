@@ -1,7 +1,9 @@
 {
 	"lerna":"2.8.0" ,
 	"packages":[
-		"docs"
+		"docs" ,
+		"modules/Website/modules/Documentation/modules/MarkdownLoader"
 	] ,
+	"npmClient":"yarn" ,
 	"version":"independent"
 }

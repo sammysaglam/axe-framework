@@ -18,3 +18,7 @@
 	path = modules/Website/modules/Comment/views/_axe-comments-package
 	url = https://github.com/sammysaglam/axe-comments
 	ignore = dirty
+[submodule "modules/Website/modules/Documentation/modules/MarkdownLoader"]
+	path = modules/Website/modules/Documentation/modules/MarkdownLoader
+	url = https://github.com/sammysaglam/axe-markdown-loader
+	ignore = dirty
