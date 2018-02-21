@@ -51,6 +51,17 @@
 		return substr(strrchr($filename , '.') , 1);
 	}
 
+	// array_reduce_key
+	function array_reduce_key($array , $callback , $initial) {
+		return array_reduce(
+			array_keys($array) ,
+			function($cumulative , $key) use ($array , $callback) {
+				return $callback($cumulative,$array[$key],$key);
+			} ,
+			""
+		);
+	}
+
 	// get mimetype based on file extension
 	function mime_type($file_ext) {
 
