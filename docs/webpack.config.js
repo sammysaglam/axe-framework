@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -128,7 +129,10 @@ module.exports = env => {
 				...(analyzeBuild ? [
 					new BundleAnalyzerPlugin()
 				] : [])
-			])
+			]),
+			new webpack.DefinePlugin({
+				AXE_DEV: true
+			})
 		],
 		module: {
 			rules: [
@@ -159,7 +163,8 @@ module.exports = env => {
 		resolve: {
 			alias: {
 				'react': path.resolve('node_modules/react'),
-				'react-dom': path.resolve('node_modules/react-dom')
+				'react-dom': path.resolve('node_modules/react-dom'),
+				'prop-types$': path.join(__dirname, 'node_modules/axe-prop-types')
 			}
 		}
 	};

@@ -2,7 +2,8 @@
 	"lerna":"2.8.0" ,
 	"packages":[
 		"docs" ,
-		"modules/Website/modules/Documentation/modules/MarkdownLoader"
+		"modules/Website/modules/Documentation/modules/MarkdownLoader" ,
+		"modules/Website/modules/Documentation/modules/AxePropTypes"
 	] ,
 	"npmClient":"yarn" ,
 	"version":"independent"

@@ -22,3 +22,7 @@
 	path = modules/Website/modules/Documentation/modules/MarkdownLoader
 	url = https://github.com/sammysaglam/axe-markdown-loader
 	ignore = dirty
+[submodule "modules/Website/modules/Documentation/modules/AxePropTypes"]
+	path = modules/Website/modules/Documentation/modules/AxePropTypes
+	url = https://github.com/sammysaglam/axe-prop-types
+	ignore = dirty
