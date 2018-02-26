@@ -15,7 +15,7 @@
 		"test:coverage": "jest --coverage"
 	},
 	"dependencies": {
-		"axe-markdown-loader": "^1.0.7",
+		"axe-markdown-loader": "^1.0.8",
 		"axe-prop-types": "^1.0.0",
 		"object-filter": "^1.0.2",
 		"object.map": "^1.0.0",
