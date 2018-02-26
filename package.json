@@ -10,7 +10,7 @@
 		"lint": "./node_modules/.bin/eslint .",
 		"dev": "npm run dev -prefix docs",
 		"postinstall": "./node_modules/.bin/lerna bootstrap",
-		"publish":"./node_modules/.bin/lerna exec -- npm run build && ./node_modules/.bin/lerna publish --skip-git"
+		"publish":"./node_modules/.bin/lerna run build && ./node_modules/.bin/lerna publish --skip-git"
 	},
 	"devDependencies": {
 		"eslint": "^4.13.0",
