@@ -15,8 +15,7 @@
 	},
 	"devDependencies": {
 		"eslint": "^4.13.0",
-		"eslint-plugin-react": "^7.5.1",
-		"eslint-sammy-preset": "^1.1.8",
+		"eslint-sammy-preset": "^2.0.2",
 		"lerna": "^2.8.0"
 	}
 }
