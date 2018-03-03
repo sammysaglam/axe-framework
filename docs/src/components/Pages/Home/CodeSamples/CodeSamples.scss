@@ -1,0 +1,39 @@
+.code-samples {
+	width       : 100%;
+	padding-top : 1rem;
+
+	&__inner {
+		max-width       : $page-max-width;
+		margin          : auto;
+		display         : flex;
+		flex-wrap       : wrap;
+		justify-content : center;
+
+	}
+
+	.axe-markdown {
+		font-size      : 0.75rem;
+		width          : 50%;
+		padding-bottom : 0;
+
+		@media screen and (max-width : 768px) {
+			width : 100%;
+		}
+
+		> h3 {
+			font-family : $lato-font;
+			font-size   : 1.25rem;
+			font-weight : 900;
+			margin     : {
+				top    : 0;
+				bottom : 0.3125rem;
+			}
+		}
+
+		&__render-source {
+			letter-spacing : -0.03125rem;
+			word-spacing   : 0;
+		}
+	}
+
+}

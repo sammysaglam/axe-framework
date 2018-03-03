@@ -1,0 +1,21 @@
+.logo {
+	font-family    : $lato-font;
+	font-weight    : 700;
+	color          : $color-white;
+	font-size      : 1.5rem;
+	display        : flex;
+	align-items    : center;
+	letter-spacing : -0.03125em;
+	word-spacing   : 0.25em;
+
+	svg {
+		width        : 2.5rem;
+		height       : 2.5rem;
+		fill         : $color-white;
+		margin-right : 0.75rem;
+	}
+
+	&.active {
+		color : $color-white;
+	}
+}

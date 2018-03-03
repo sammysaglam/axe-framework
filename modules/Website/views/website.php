@@ -1,9 +1,24 @@
-<?php echo $html_head; ?>
-<?php echo $header; ?>
-	<main>
-		<?php echo $login_form; ?>
-		<br /><br /><br /><hr/><br />
-		<?php echo $editable_content; ?>
-		<?php // echo $signup_form ; ?>
-	</main>
-<?php echo $html_close; ?>
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta charset="UTF-8">
+		<title>Axe Framework Documentation</title></head>
+		<style>
+			<?php
+				echo file_get_contents(FRAMEWORK_PATH . "/docs/build/bundle.css");
+			?>
+		</style>
+	<body>
+		<div id="app">
+			<?php
+				echo $ssr;
+			?>
+		</div>
+		<script>
+			<?php
+				echo file_get_contents(FRAMEWORK_PATH . "/docs/build/bundle.js");
+			?>
+		</script>
+	</body>
+</html>

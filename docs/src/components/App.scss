@@ -1,0 +1,144 @@
+// fonts
+@font-face {
+	font-family : Lato;
+	src         : url('./_fonts/Lato/lato-light-webfont.woff2') format('woff2'), url('./_fonts/Lato/lato-light-webfont.woff') format('woff');
+	font-style  : normal;
+	font-weight : 300;
+}
+
+@font-face {
+	font-family : Lato;
+	src         : url('./_fonts/Lato/lato-bold-webfont.woff2') format('woff2'), url('./_fonts/Lato/lato-bold-webfont.woff') format('woff');
+	font-style  : normal;
+	font-weight : 700;
+}
+
+@font-face {
+	font-family : Lato;
+	src         : url('./_fonts/Lato/lato-black-webfont.woff2') format('woff2'), url('./_fonts/Lato/lato-black-webfont.woff') format('woff');
+	font-style  : normal;
+	font-weight : 900;
+}
+
+$lato-font : Lato, Helvetica Neue, Helvetica, Arial, sans-serif;
+$color-primary : #FF7070;
+$color-secondary : #3DBCB1;
+$color-tertiary : #0F2F2C;
+$color-white : #FFFFFF;
+$page-max-width : 1200px;
+
+// general
+* {
+	box-sizing : border-box;
+	margin     : 0;
+	padding    : 0;
+}
+
+html {
+	font-size : 16px;
+}
+
+body, td {
+	font-family    : $lato-font;
+	color          : $color-tertiary;
+	font-weight    : 300;
+	letter-spacing : -0.03125em;
+	word-spacing   : 0.25em;
+}
+
+#app {
+	margin-top : 2.5rem;
+}
+
+@mixin jelly-click($scale: 1.125) {
+	transition : transform 0.3s cubic-bezier(.86, .28, 0, 1.17);
+
+	&:active {
+		transform : scale3d($scale, $scale, $scale);
+	}
+}
+
+.axe-markdown {
+	font-size      : 1.3125rem;
+	font-family    : $lato-font;
+	padding-bottom : 15rem;
+
+	a {
+		color           : $color-primary;
+		text-decoration : none;
+		font-weight     : 700;
+		background      : lighten($color-primary, 23%);
+
+		&:hover {
+			background : lighten($color-secondary, 23%);
+			color      : $color-white;
+		}
+	}
+
+	> h1 {
+		margin-top  : 4rem;
+		font-weight : 900;
+	}
+
+	> h2 {
+		font-weight       : 900;
+		border-left-color : $color-secondary;
+	}
+
+	> p {
+		line-height : 1.75rem;
+	}
+
+	> blockquote {
+		font-size   : 1.25rem;
+		color       : darken($color-secondary, 15%);
+		background  : lighten($color-secondary, 48%);
+		padding     : 1rem 1.5rem;
+		border-left : $color-primary 4px solid;
+		margin     : {
+			right  : 1rem;
+			bottom : 2rem;
+		}
+	}
+
+	ul {
+		font-size : 1rem;
+
+		margin   : {
+			left : 2rem;
+			top  : 0.5rem;
+		}
+
+		li {
+			margin-bottom : 0.125rem;
+		}
+	}
+
+	&__render {
+		margin-top : 0.5rem;
+	}
+
+	&__render-source {
+		letter-spacing : -0.03125rem;
+		word-spacing   : 0;
+		line-height    : 1.25rem;
+
+		.token.comment {
+			color       : #EEEEEE;
+			text-shadow : 0 0 15px rgba(255, 255, 255, 0.3);
+		}
+	}
+}
+
+// components
+@import "./Link/Link";
+@import "./Button/Button";
+@import "./Logo/Logo";
+@import "./Nav/Nav";
+@import "./Footer/Footer";
+@import "./DocumentationPage/DocumentationPage";
+
+// pages
+@import "./Pages/Home/Home";
+@import "./Pages/Home/Hero/Hero";
+@import "./Pages/Home/CodeSamples/CodeSamples";

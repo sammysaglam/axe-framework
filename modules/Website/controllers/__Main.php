@@ -15,53 +15,32 @@
 
 		public function _construct() {
 
-			$this->html_head_model = new HtmlHead();
-			$this->html_head_model->set_title('Axe');
-			$this->html_head_model->add_stylesheet($this->get_css_path('style.css'));
-			if ( \Axe\Controller::get('mod-auth')->get_logged_in_user() ) $this->html_head_model->add_script($this->get_js_path('libs/react-draft-jquery-bundle.js'));
-
-			$this->html_head = $this->get_view('html_head' ,
-				array(
-					"model" => $this->html_head_model
-				));
-			$this->html_close = $this->get_view('html_close');
-			$this->header = $this->get_view('header');
+			$this->js_bundle = Controller::get('mod-website/react-renderer')->load_bundle(FRAMEWORK_PATH . 'docs/build/bundle.js');
 
 			$this->website = $this->get_view(
-				'website' ,
-				array(
-					"html_head"  => $this->html_head ,
-					"html_close" => $this->html_close ,
-					"header"     => $this->header
-				)
+				'website'
 			);
 
 		}
 
-		public function index() {
+		public function index($location) {
 
-			$curr_page = 'home';
+			$locationWithUnderscoresReplaced = str_replace('_','-',$location);
 
-			// get views
-			$login_form = Controller::get('mod-auth')->login_form();
-			$signup_form = Controller::get('mod-auth')->signup_form();
-			$editable_content_controller = Controller::get('mod-website/mod-editable-content');
-
-			// add stylesheet to html head section
-			$this->html_head_model->set_title($this->html_head_model->get_title() . ' - Home');
-			if ( \Axe\Controller::get('mod-auth')->get_logged_in_user() ) $this->html_head_model->add_stylesheet($editable_content_controller->get_css_path('editable-content.css')) ;
-			$this->html_head_model->add_stylesheet($editable_content_controller->get_css_path('themes/theme-1.css')) ;
-
-			// add editable page to website
-			$this->website->update_params(
-				array(
-					"login_form"       => $login_form ,
-					"signup_form"      => $signup_form ,
-					"editable_content" => $editable_content_controller->index($curr_page)
-				)
-			);
+			$this->website->update_params([
+				"ssr" => $this->generate_website_ssr('/' . $locationWithUnderscoresReplaced)
+			]);
 
 			// return website
 			return $this->website;
+		}
+
+		private function generate_website_ssr($location) {
+			return $this->js_bundle->generate_markup(
+				'Website' , [
+					"location" => $location ,
+					"context"  => (object)[]
+				]
+			);
 		}
 	}
