@@ -1,13 +1,19 @@
 import React from 'react';
-import {Switch , Route , NavLink} from 'react-router-dom';
-import PropTypes from 'prop-types';
+import { Route } from 'react-router-dom';
 
-import AppMarkdown from "./App.md";
+import Nav from './Nav/Nav';
+
+import Home from './Pages/Home/Home';
+import Docs from './Pages/Docs/Docs';
+import Tutorial from './Pages/Tutorial/Tutorial';
 
 const App = () => (
-	<AppMarkdown value="hello" func={() => console.log('sams!!')} someComponent={<div>hell345o</div>}/>
+	<React.Fragment>
+		<Nav />
+		<Route exact={true} path="/" render={Home} />
+		<Route path="/docs" render={Docs} />
+		<Route path="/tutorial" render={Tutorial} />
+	</React.Fragment>
 );
-
-App.propTypes = {};
 
 export default App;

@@ -1,0 +1,51 @@
+.nav {
+	position   : fixed;
+	top        : 0;
+	width      : 100%;
+	height     : 2.5rem;
+	background : $color-tertiary;
+	z-index    : 1;
+
+	&__inner {
+		width           : calc(100% - 1rem);
+		max-width       : $page-max-width;
+		margin          : auto;
+		display         : flex;
+		justify-content : space-between;
+		align-items     : center;
+	}
+
+	&__links-wrapper {
+		display         : flex;
+		flex-grow       : 1;
+		justify-content : space-between;
+		align-self      : stretch;
+		max-width       : 18rem;
+	}
+
+	&__link {
+		color       : $color-white;
+		padding     : 0 1rem;
+		font-weight : 700;
+
+		@include jelly-click(1.25);
+
+		&--internal {
+			display       : flex;
+			align-items   : center;
+			border-top    : 3px solid transparent;
+			border-bottom : 4px solid transparent;
+			font-size     : 1.0625rem;
+		}
+
+		&--github {
+			font-size : 0.875rem;
+		}
+
+		&.active {
+			color         : $color-secondary;
+			border-bottom : 4px solid $color-secondary;
+		}
+
+	}
+}

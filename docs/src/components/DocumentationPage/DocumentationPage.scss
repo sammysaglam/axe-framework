@@ -1,0 +1,86 @@
+.documentation-page {
+
+	&__inner {
+		margin    : auto;
+		max-width : $page-max-width;
+		display   : flex;
+	}
+
+	&__markdown-wrapper {
+		flex-grow : 1;
+		max-width : 70%;
+	}
+
+	&__table-of-contents-wrapper {
+		max-width : 30%;
+		flex-grow : 1;
+	}
+
+	&__table-of-contents {
+		color        : $color-white;
+		height       : 100vh;
+		background   : $color-primary;
+		position     : fixed;
+		margin-right : -100000px;
+		box-shadow   : inset -1px -3px 15px rgba(0, 0, 0, 0.25);
+		padding   : {
+			left  : 2rem;
+			right : 100000px;
+		}
+	}
+
+	&__contents-list {
+		font-weight  : 700;
+		list-style   : none;
+		font-size    : 1rem;
+		word-spacing : 0.125rem;
+	}
+
+	&__list-item {
+		margin-top   : 0.25rem;
+		padding-left : 0.125rem;
+
+		.link {
+			color : $color-white;
+
+			&:hover {
+				color : lighten($color-secondary, 40%);
+			}
+
+			&.active {
+				color : $color-tertiary;
+			}
+		}
+	}
+
+	&__content-list-title {
+		margin-top : 2.5rem;
+	}
+
+	.axe-markdown {
+		padding-right : 3rem;
+
+		> blockquote {
+			margin : 0.5rem 0;
+		}
+
+		> p > code {
+			font-size  : 1rem;
+			background : #EEEEEE;
+			color      : $color-primary;
+			padding    : 0.125rem 0.25rem;
+		}
+
+		> h4 > code {
+			font-size   : 1.25rem;
+			background  : $color-tertiary;
+			color       : $color-primary;
+			padding     : 0.125rem 0.25rem;
+			font-weight : normal;
+		}
+
+		&__render-source {
+			font-size : 0.875rem;
+		}
+	}
+}

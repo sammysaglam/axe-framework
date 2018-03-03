@@ -6,7 +6,7 @@
 	"scripts": {
 		"dev": "webpack-dev-server --hot --history-api-fallback --env.hot=true --open",
 		"watch": "webpack --progress --watch",
-		"build": "webpack -p",
+		"build": "webpack -p --env.production=true",
 		"analyze": "webpack -p --env.analyze=true",
 		"lint": "\"./node_modules/.bin/eslint\" src",
 		"lint-fix": "\"./node_modules/.bin/eslint\" src --fix",
@@ -15,8 +15,7 @@
 		"test:coverage": "jest --coverage"
 	},
 	"dependencies": {
-		"axe-markdown-loader": "^1.0.8",
-		"axe-prop-types": "^1.0.0",
+		"axe-prop-types": "^1.0.4",
 		"object-filter": "^1.0.2",
 		"object.map": "^1.0.0",
 		"prismjs": "^1.11.0",
@@ -27,6 +26,7 @@
 		"remarkable": "^1.7.1"
 	},
 	"devDependencies": {
+		"axe-markdown-loader": "^1.0.12",
 		"babel-core": "^6.26.0",
 		"babel-jest": "^22.1.0",
 		"babel-loader": "^7.1.2",
@@ -40,8 +40,7 @@
 		"enzyme": "^3.2.0",
 		"enzyme-adapter-react-16": "^1.1.0",
 		"eslint": "^4.13.0",
-		"eslint-plugin-react": "^7.5.1",
-		"eslint-sammy-preset": "^1.2.0",
+		"eslint-sammy-preset": "^2.0.2",
 		"extract-text-webpack-plugin": "^3.0.2",
 		"html-minifier": "^3.5.7",
 		"imagemin-webpack-plugin": "^1.5.2",
@@ -54,6 +53,7 @@
 		"react-hot-loader": "^3.1.3",
 		"sass-loader": "^6.0.6",
 		"style-loader": "^0.19.0",
+		"svg-react-loader": "^0.4.5",
 		"uglifyjs-webpack-plugin": "^1.1.2",
 		"url-loader": "^0.6.2",
 		"webpack": "^3.10.0",

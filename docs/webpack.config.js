@@ -12,7 +12,7 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 
 const copyHotLoaderFiles = new CopyWebpackPlugin([
 	{
-		from: { glob: '**/*.+(html|json|png|svg|jpg|jpeg|gif|ttf|woff|eot)' },
+		from: { glob: '**/*.+(html|json|png|svg|jpg|jpeg|gif|ttf|woff|woff2|eot)' },
 		context: 'src/hot-loader',
 		to: './[path]/[name].[ext]'
 	}
@@ -25,7 +25,7 @@ const copyHotLoaderFiles = new CopyWebpackPlugin([
 
 const copyFiles = new CopyWebpackPlugin([
 	{
-		from: { glob: '**/*.+(html|php|json|png|svg|jpg|jpeg|gif|ttf|woff|eot)' },
+		from: { glob: '**/*.+(html|php|json|png|svg|jpg|jpeg|gif|ttf|woff|woff2|eot)' },
 		context: 'src',
 		to: './[path]/[name].[ext]',
 		transform: (fileContents, filepath) => {
@@ -72,7 +72,8 @@ const extractCssGenerator = isHotLoaderEnv => new ExtractTextPlugin({
 module.exports = env => {
 
 	const analyzeBuild = env && env.analyze;
-	const isHotLoaderEnv = env && env.hot;
+	const isHotLoaderEnv = env && env.hot === "true";
+	const isProduction = env && env.production === "true";
 	const extractCss = extractCssGenerator(isHotLoaderEnv);
 
 	return {
@@ -112,7 +113,8 @@ module.exports = env => {
 			copyFiles,
 			...(isHotLoaderEnv ? [
 				copyHotLoaderFiles
-			] : [
+			] : []) ,
+			...(isProduction ? [
 				new ImageminPlugin(),
 				new CleanWebpackPlugin('build'),
 				new OptimizeCssAssetsPlugin({
@@ -129,18 +131,19 @@ module.exports = env => {
 				...(analyzeBuild ? [
 					new BundleAnalyzerPlugin()
 				] : [])
-			]),
-			new webpack.DefinePlugin({
-				AXE_DEV: true
-			})
+			] : [])
 		],
 		module: {
 			rules: [
 				{ test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader' },
 				{ test: /\.md/, exclude: /node_modules/, loader: ['babel-loader', 'axe-markdown-loader'] },
 				{
-					test: /\.(png|svg|jpg|jpeg|gif|ttf|woff|eot)$/,
+					test: /\.(png|jpg|jpeg|gif|ttf|woff|woff2|eot)$/,
 					loader: 'url-loader'
+				},
+				{
+					test: /\.(svg)$/,
+					loader: 'svg-react-loader'
 				},
 				{
 					test: /\.(scss)$/,
@@ -164,7 +167,13 @@ module.exports = env => {
 			alias: {
 				'react': path.resolve('node_modules/react'),
 				'react-dom': path.resolve('node_modules/react-dom'),
-				'prop-types$': path.join(__dirname, 'node_modules/axe-prop-types')
+				'prop-types$': path.join(__dirname, 'node_modules/axe-prop-types'),
+				'../prop-types$': path.join(__dirname, 'node_modules/prop-types')
+			}
+		},
+		resolveLoader: {
+			alias: {
+				'axe-markdown-loader$': path.join(__dirname, '../modules/Website/modules/Documentation/modules/MarkdownLoader/index.development.js')
 			}
 		}
 	};

@@ -1,0 +1,12 @@
+.link {
+	color           : $color-tertiary;
+	text-decoration : none;
+
+	&:hover {
+		color : $color-primary;
+	}
+
+	&.active {
+		color : $color-primary;
+	}
+}

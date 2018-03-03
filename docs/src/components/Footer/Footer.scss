@@ -1,0 +1,22 @@
+.footer {
+	width      : 100%;
+	background : $color-tertiary;
+	margin-top : 3rem;
+
+	&__inner {
+		max-width       : $page-max-width;
+		margin          : auto;
+		height          : 100vh;
+		padding         : 5rem 1rem;
+		color           : $color-white;
+		text-align      : center;
+		display         : flex;
+		justify-content : center;
+		align-items     : center;
+	}
+
+	.logo {
+		justify-content : center;
+	}
+
+}
