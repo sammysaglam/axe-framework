@@ -2,16 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactDOMServer from 'react-dom/server';
 import { AppContainer } from 'react-hot-loader';
-import { BrowserRouter , StaticRouter } from 'react-router-dom';
+import { BrowserRouter, StaticRouter } from 'react-router-dom';
 import App from './components/App';
-
 
 // determine if environment is server-side or client-side
 const isServerSide = typeof document === 'undefined';
 
 // client-side rendering (with hot-loader)
 if (!isServerSide) {
-
 	// render website
 	const render = Component => {
 		const renderResult = (
@@ -31,16 +29,13 @@ if (!isServerSide) {
 			render(App);
 		});
 	}
-
 } else {
-	
 	// ssr
 	window.React = React;
 	window.ReactDOM = ReactDOM;
 	window.ReactDOMServer = ReactDOMServer;
 
 	const fakeFunction = () => null;
-	const fakeObject = {};
 
 	window.setTimeout = fakeFunction;
 

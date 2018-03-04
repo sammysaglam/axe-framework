@@ -12,11 +12,7 @@ const DocumentationPageGenerator = ({ baseUrl, pages }) => {
 	const toRoutesWithPages = (sections, subpages, groupLabel) => [
 		...sections,
 		...subpages.map(({ label, view }) => (
-			<Route
-				key={groupLabel + '/' + label}
-				path={`${baseUrl}/${urlFriendly(groupLabel)}/${urlFriendly(label)}`}
-				render={() => view}
-			/>
+			<Route key={groupLabel + '/' + label} path={`${baseUrl}/${urlFriendly(groupLabel)}/${urlFriendly(label)}`} render={() => view} />
 		))
 	];
 

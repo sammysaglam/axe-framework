@@ -66,7 +66,7 @@ const Docs = () => (
 				{
 					label: 'Creating Routes',
 					view: <CreatingRoutes />
-				} ,
+				},
 				{
 					label: 'Default Routes',
 					view: <DefaultRoutes />
