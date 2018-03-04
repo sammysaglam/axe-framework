@@ -8,20 +8,22 @@ import Link from '../../Link/Link';
 const TableOfContents = ({ baseUrl, pages }) => (
 	<div className="documentation-page__table-of-contents-wrapper">
 		<div className="documentation-page__table-of-contents">
-			{reduce(
-				pages,
-				(sections, subpages, groupLabel) => [
-					...sections,
-					<LinkGroup groupLabel={groupLabel} key={groupLabel}>
-						{subpages.map(({ label }) => (
-							<li className="documentation-page__list-item" key={`${groupLabel}/${label}`}>
-								<Link url={`${baseUrl}/${urlFriendly(groupLabel)}/${urlFriendly(label)}`}>{label}</Link>
-							</li>
-						))}
-					</LinkGroup>
-				],
-				[]
-			)}
+			<div className="documentation-page__table-of-contents-inner">
+				{reduce(
+					pages,
+					(sections, subpages, groupLabel) => [
+						...sections,
+						<LinkGroup groupLabel={groupLabel} key={groupLabel}>
+							{subpages.map(({ label }) => (
+								<li className="documentation-page__list-item" key={`${groupLabel}/${label}`}>
+									<Link url={`${baseUrl}/${urlFriendly(groupLabel)}/${urlFriendly(label)}`}>{label}</Link>
+								</li>
+							))}
+						</LinkGroup>
+					],
+					[]
+				)}
+			</div>
 		</div>
 	</div>
 );
