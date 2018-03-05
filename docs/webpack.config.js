@@ -79,7 +79,7 @@ module.exports = env => {
 		entry: {
 			bundle: isHotLoaderEnv
 				? ['babel-polyfill', 'react-hot-loader/patch', './src/entry', './src/entry.scss']
-				: ['babel-polyfill', './src/entry', './src/entry.scss']
+				: ['regenerator-runtime/runtime', './src/entry', './src/entry.scss']
 		},
 		devServer: {
 			// eslint-disable-next-line no-undef
