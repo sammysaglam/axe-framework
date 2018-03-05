@@ -77,7 +77,9 @@ module.exports = env => {
 	return {
 		...(isHotLoaderEnv ? { devtool: 'source-map' } : {}),
 		entry: {
-			bundle: isHotLoaderEnv ? ['babel-polyfill', 'react-hot-loader/patch', './src/entry', './src/entry.scss'] : ['./src/entry', './src/entry.scss']
+			bundle: isHotLoaderEnv
+				? ['babel-polyfill', 'react-hot-loader/patch', './src/entry', './src/entry.scss']
+				: ['babel-polyfill', './src/entry', './src/entry.scss']
 		},
 		devServer: {
 			// eslint-disable-next-line no-undef
