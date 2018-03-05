@@ -17,6 +17,9 @@ const Nav = () => (
 				<Link className="nav__link nav__link--internal" exact={false} url="/tutorial">
 					<span>Tutorial</span>
 				</Link>
+				<Link className="nav__link nav__link--internal" exact={false} url="/modules">
+					<span>Modules</span>
+				</Link>
 			</nav>
 			<div>
 				<Link className="nav__link nav__link--github" newTab={true} type="html-a-tag" url="https://github.com/sammysaglam/axe-framework/releases">

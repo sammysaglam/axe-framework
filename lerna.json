@@ -3,7 +3,8 @@
 	"packages":[
 		"docs" ,
 		"modules/Website/modules/Documentation/modules/MarkdownLoader" ,
-		"modules/Website/modules/Documentation/modules/AxePropTypes"
+		"modules/Website/modules/Documentation/modules/AxePropTypes" ,
+		"modules/Auth/views/_react-login-panel-package"
 	] ,
 	"npmClient":"yarn" ,
 	"version":"independent"

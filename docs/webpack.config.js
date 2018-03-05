@@ -131,7 +131,7 @@ module.exports = env => {
 					loader: 'babel-loader'
 				},
 				{
-					test: /\.md/,
+					test: /\.md$/,
 					exclude: /node_modules/,
 					loader: ['babel-loader', 'axe-markdown-loader']
 				},
@@ -156,23 +156,28 @@ module.exports = env => {
 							'sass-loader'
 						],
 						fallback: 'style-loader'
-					}),
-					exclude: /themes/
+					})
 				}
 			]
 		},
 		resolve: {
 			alias: {
+				/* eslint-disable no-undef */
 				react: path.resolve('node_modules/react'),
 				'react-dom': path.resolve('node_modules/react-dom'),
-				'prop-types$': path.join(__dirname, 'node_modules/axe-prop-types'), // eslint-disable-line no-undef
-				'../prop-types$': path.join(__dirname, 'node_modules/prop-types') // eslint-disable-line no-undef
+				'prop-types$': path.join(__dirname, 'node_modules/axe-prop-types'),
+				'../prop-types$': path.join(__dirname, 'node_modules/prop-types'),
+				prismjs: path.join(__dirname, 'node_modules/prismjs'),
+				remarkable: path.join(__dirname, 'node_modules/remarkable'),
+				'react-login-panel': path.resolve('node_modules/react-login-panel/src/ReactLoginPanel')
+				/* eslint-enable no-undef */
 			}
 		},
 		resolveLoader: {
 			alias: {
-				// eslint-disable-next-line no-undef
-				'axe-markdown-loader$': path.join(__dirname, '../modules/Website/modules/Documentation/modules/MarkdownLoader/index.development.js')
+				/* eslint-disable no-undef */
+				'axe-markdown-loader$': path.join(__dirname, 'node_modules/axe-markdown-loader/index.development.js')
+				/* eslint-enable no-undef */
 			}
 		}
 	};

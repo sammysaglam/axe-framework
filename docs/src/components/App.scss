@@ -101,6 +101,19 @@ body, td {
 		}
 	}
 
+	> hr {
+		margin     : {
+			top    : 1.25rem;
+			bottom : 1rem;
+		}
+		border     : {
+			top:none;
+			left:none;
+			right:none;
+			bottom : dotted 1px #000;
+		}
+	}
+
 	ul {
 		font-size : 1rem;
 
@@ -116,6 +129,10 @@ body, td {
 
 	&__render {
 		margin-top : 0.5rem;
+	}
+
+	&__render-result {
+		position: relative;
 	}
 
 	&__render-source {
@@ -142,3 +159,6 @@ body, td {
 @import "./Pages/Home/Home";
 @import "./Pages/Home/Hero/Hero";
 @import "./Pages/Home/CodeSamples/CodeSamples";
+
+// modules documentation
+@import "./Pages/ModuleDocs/ModuleDocs";
