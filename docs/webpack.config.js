@@ -98,7 +98,7 @@ module.exports = env => {
 			// eslint-disable-next-line no-undef
 			path: path.resolve(__dirname, 'build'),
 			filename: '[name].js',
-			publicPath: isHotLoaderEnv ? 'http://localhost:9155/' : 'http://www.axe.cc/'
+			publicPath: '/'
 		},
 		plugins: [
 			extractCss,
