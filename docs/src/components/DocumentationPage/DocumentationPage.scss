@@ -29,24 +29,24 @@
 		}
 
 		&-inner {
-			height : calc(100vh - 2.5rem);
-			overflow-y: scroll;
-			padding-right: 2rem;
-			padding-bottom: 3rem;
-			min-width: 11.5rem;
+			height         : calc(100vh - 2.5rem);
+			overflow-y     : scroll;
+			padding-right  : 2rem;
+			padding-bottom : 3rem;
+			min-width      : 11.5rem;
 
 			// scroll bar
 			&::-webkit-scrollbar {
-				width: 10px;
+				width : 10px;
 			}
 			&::-webkit-scrollbar-track {
-				background: #f1f1f1;
+				background : #F1F1F1;
 			}
 			&::-webkit-scrollbar-thumb {
-				background: $color-tertiary;
+				background : $color-tertiary;
 			}
 			&::-webkit-scrollbar-thumb:hover {
-				background: #555;
+				background : #555555;
 			}
 		}
 	}

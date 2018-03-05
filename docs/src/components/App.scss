@@ -107,10 +107,10 @@ body, td {
 			bottom : 1rem;
 		}
 		border     : {
-			top:none;
-			left:none;
-			right:none;
-			bottom : dotted 1px #000;
+			top    : none;
+			left   : none;
+			right  : none;
+			bottom : dotted 1px #000000;
 		}
 	}
 
@@ -132,7 +132,7 @@ body, td {
 	}
 
 	&__render-result {
-		position: relative;
+		position : relative;
 	}
 
 	&__render-source {

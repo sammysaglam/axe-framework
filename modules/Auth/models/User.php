@@ -3,7 +3,6 @@
 	namespace Auth;
 
 	use Axe\DBQuery;
-	use FinancialInstrument\Comment;
 
 	class User extends \Axe\ORM {
 

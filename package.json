@@ -23,5 +23,5 @@
 		"eslint-sammy-preset": "^2.1.0",
 		"lerna": "^2.8.0",
 		"react-hot-loader": "^3.1.3"
-	},
+	}
 }

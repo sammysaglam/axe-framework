@@ -1,24 +1,24 @@
 {
-	"presets":[
+	"presets": [
 		[
-			"env" ,
+			"env",
 			{
-				"modules":false
+				"modules": false
 			}
-		] ,
+		],
 		"react"
-	] ,
-	"plugins":[
+	],
+	"plugins": [
 		"react-hot-loader/babel",
-		"transform-object-rest-spread" ,
+		"transform-object-rest-spread",
 		"syntax-dynamic-import"
-	] ,
-	"env":{
-		"test":{
-			"presets":[
+	],
+	"env": {
+		"test": {
+			"presets": [
 				[
 					"env"
-				] ,
+				],
 				"react"
 			]
 		}
