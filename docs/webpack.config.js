@@ -70,8 +70,8 @@ const extractCssGenerator = isHotLoaderEnv =>
 
 module.exports = env => {
 	const analyzeBuild = env && env.analyze;
-	const isHotLoaderEnv = env && env.hot === 'true';
-	const isProduction = env && env.production === 'true';
+	const isHotLoaderEnv = env && env.hot === 'true' && !analyzeBuild;
+	const isProduction = (env && env.production === 'true') || analyzeBuild;
 	const extractCss = extractCssGenerator(isHotLoaderEnv);
 
 	return {
