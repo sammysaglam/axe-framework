@@ -15,6 +15,7 @@ $RECYCLE.BIN/
 yarn.lock
 yarn-error.log
 package-lock.json
+lerna-debug.log
 node_modules
 
 # Windows Installer files
