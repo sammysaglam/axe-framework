@@ -1,1 +1,0 @@
-<a href="auth/logout" class="logout-button">Logout</a>
