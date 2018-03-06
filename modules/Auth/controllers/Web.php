@@ -13,6 +13,11 @@
 			$are_login_credentials_correct = \Auth::authenticate_creds($username , $password);
 
 			if ( $are_login_credentials_correct ) {
+
+				// regenerate CSRF token
+				\Axe\CSRF::generate_new_token();
+
+				// redirect or not
 				if ( $redirect_target ) {
 					header('Location:' . $redirect_target);
 				} else {
@@ -24,7 +29,14 @@
 		}
 
 		public function logout() {
+
+			// logout user
 			\Auth::logout();
+
+			// regenerate CSRF token
+			\Axe\CSRF::generate_new_token();
+
+			// redirect
 			header('Location:/');
 		}
 
@@ -33,6 +45,10 @@
 				throw new \Exception('CSRF validation error');
 			}
 
+			// regenerate CSRF token
+			\Axe\CSRF::generate_new_token();
+
+			// create user
 			\Auth\User::create_new(array(
 				"username" => $username ,
 				"password" => $password
