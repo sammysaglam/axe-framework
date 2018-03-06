@@ -11,7 +11,8 @@ The following will return the logged in `User`:
 
 ## Authenticate credentials
 The following will verify the CSRF token, and then check the user credentials: if correct, it will
-log the user in. Can also force a redirect using the `$redirect_target` parameter.
+log the user in and return the `User` in JSON string format. If authentication fails, it will
+return `null` in JSON string format. Can also force a redirect using the `$redirect_target` parameter.
 
 > Bound as default route: *yoursite.com/auth/authenticate/*
 

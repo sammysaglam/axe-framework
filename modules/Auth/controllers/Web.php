@@ -2,6 +2,9 @@
 
 	namespace Auth\Controllers;
 
+	use Auth\User;
+	use Axe\Controller;
+
 	class Web extends \Axe\Controller {
 
 		public function authenticate($csrf_value , $username , $password , $redirect_target = null) {
@@ -21,9 +24,11 @@
 				if ( $redirect_target ) {
 					header('Location:' . $redirect_target);
 				} else {
-					echo 1;
+					return json_encode(\Auth::get_logged_in_user());
 				}
 
+			} else {
+				return json_encode(null);
 			}
 
 		}
