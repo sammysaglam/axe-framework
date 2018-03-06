@@ -17,3 +17,17 @@ $config["dev_mode"] = false;
 $config['csrf_history_max_tokens'] = 15;
 $config['single_use_tokens']       = false;
 ```
+
+### General
+> `$config["dev_mode"] = false`
+> 
+> - shows errors
+> - sets `DEV_MODE` constant (bool)
+> - allows global function `html_dump()` output
+
+### CSRF
+> `$config['csrf_history_max_tokens'] = 15`
+> 
+> `$config['single_use_tokens'] = false`
+>
+> - See docs: Security/CSRF
