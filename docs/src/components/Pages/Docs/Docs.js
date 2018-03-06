@@ -8,6 +8,8 @@ import Configuring from './GetStarted/02-Configuring.md';
 import CreatingRoutes from './Routing/01-Creating-Routes.md';
 import DefaultRoutes from './Routing/02-Default-Routes.md';
 
+import CSRF from './Security/01-CSRF.md';
+
 import DocumentationPage from '../../DocumentationPage/DocumentationPage';
 
 const Docs = () => (
@@ -70,6 +72,12 @@ const Docs = () => (
 				{
 					label: 'Default Routes',
 					view: <DefaultRoutes />
+				}
+			],
+			Security: [
+				{
+					label: 'CSRF',
+					view: <CSRF />
 				}
 			],
 			Contributing: [
