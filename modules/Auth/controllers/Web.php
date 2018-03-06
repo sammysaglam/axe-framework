@@ -2,20 +2,17 @@
 
 	namespace Auth\Controllers;
 
-	use \Auth\User;
-	use \Axe\Controller;
-	use \Axe\CSRF;
-
-	class Web extends Controller {
+	class Web extends \Axe\Controller {
 
 		public function authenticate($csrf_value , $username , $password , $redirect_target = null) {
 
-			if ( CSRF::verify_token($csrf_value , 'login-form') === false ) {
+			if ( \Axe\CSRF::verify_token($csrf_value , 'login-form') === false ) {
 				throw new \Exception('CSRF validation error');
 			}
-			$is_correct = \Auth::authenticate_creds($username , $password);
 
-			if ( $is_correct ) {
+			$are_login_credentials_correct = \Auth::authenticate_creds($username , $password);
+
+			if ( $are_login_credentials_correct ) {
 				if ( $redirect_target ) {
 					header('Location:' . $redirect_target);
 				} else {
@@ -32,11 +29,11 @@
 		}
 
 		public function register($csrf_value , $username , $password) {
-			if ( CSRF::verify_token($csrf_value , 'signup-form') === false ) {
+			if ( \Axe\CSRF::verify_token($csrf_value , 'signup-form') === false ) {
 				throw new \Exception('CSRF validation error');
 			}
 
-			User::create_new(array(
+			\Auth\User::create_new(array(
 				"username" => $username ,
 				"password" => $password
 			));
