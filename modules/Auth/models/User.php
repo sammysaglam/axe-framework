@@ -99,7 +99,7 @@
 
 			$member_of = false;
 			foreach ( $this->user_groups as $group ) {
-				if ( $group->id === $group_id ) {
+				if ( $group->id == $group_id ) {
 					return true;
 				}
 			}
