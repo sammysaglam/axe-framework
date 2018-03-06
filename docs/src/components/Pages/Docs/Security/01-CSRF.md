@@ -10,11 +10,12 @@ $config['single_use_tokens']       = false;
 
 ### csrf_history_max_tokens: (number)
 If — for extra-security — you wish to generate a new CSRF token using `single_use_tokens` explained
-below, but the client wants to open multiple tabs, actions they take in one tab will
+below, but the client wants to open multiple tabs, secure actions they take in one tab will
 force-generate a new CSRF, rendering the CSRF tokens in his/her other tabs invalid — this
-causes a lot of false-positive security errors and a poor user experience. So,
+causes a lot of false-negative security errors and a poor user experience. So,
 this `csrf_history_max_tokens` setting allows you to define how many historical
-CSRF tokens will still be valid.
+CSRF tokens will still be valid — (the default value is 15, meaning the last 15 CSRF tokens will
+still be considered valid).
 
 ### single_use_tokens: (bool)
 This will force-regenerate a new CSRF token on each `CSRF::verify_token(...)`. As explained above
@@ -25,7 +26,12 @@ with caution to avoid a poor user-experience, and with the `csrf_history_max_tok
 
 > *void* - `CSRF::generate_new_token()`
 
-Generate a new CSRF token for the user session.
+Generates a new CSRF token for the user session.
+
+It is generally considered best-practice to call this on
+each major state change, a very good example being when the user has just logged in. Some sites even
+go as far as regenerating a CSRF token on each page request, but this can cause a
+poor user-experience (see "csrf_history_max_tokens" above).
 
 ------------------
 
@@ -80,8 +86,17 @@ public function authenticate(
 
     // authenticate user client
     $are_login_credentials_correct = \Auth::authenticate_creds($username , $password);
-   
-    // return result
-    return $are_login_credentials_correct ? "success" : "failed";
+    
+    // check if user creds are valid
+    if ( $are_login_credentials_correct ) {
+    
+        // user has logged in, so generate new token
+        \Axe\CSRF::generate_new_token();
+        
+        return "success";
+        
+    } else {
+        return "false
+    }
 }
 ```
