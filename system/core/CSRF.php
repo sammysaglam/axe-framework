@@ -40,22 +40,16 @@
 			return $_SESSION['CSRF_tokens'][$real_index];
 		}
 
-		public static function get_form_value($unique_secret_form_name = 'default-form-name' , $echo_form_input = true) {
+		public static function get_form_value($secret_hash_key = 'default') {
 
 			// get token
 			$token = self::get_token();
 
 			// create a per-form value
-			$form_value = hash_hmac('sha512' , $unique_secret_form_name , $token);
-
-			if ( $echo_form_input ) {
-				echo '<input type="hidden" name="csrf_value" value="' . $form_value . '" />';
-			} else {
-				return $form_value;
-			}
+			return hash_hmac('sha512' , $secret_hash_key , $token);
 		}
 
-		public static function verify_token($form_value , $unique_secret_form_name = 'default-form-name') {
+		public static function verify_token($form_value , $secret_hash_key = 'default') {
 
 			$index = 0;
 			$result = false;
@@ -69,7 +63,7 @@
 				// check if csrf value submitted by form, matches the token hashed with the unique_form_name
 				!($result = hash_equals(
 					$form_value ,
-					hash_hmac('sha512' , $unique_secret_form_name , $token)
+					hash_hmac('sha512' , $secret_hash_key , $token)
 				))
 
 			) {
