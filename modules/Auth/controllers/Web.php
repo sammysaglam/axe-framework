@@ -8,18 +8,6 @@
 
 	class Web extends Controller {
 
-		public function login_form() {
-			return $this->get_view('login_form');
-		}
-
-		public function signup_form() {
-			return $this->get_view('signup_form');
-		}
-
-		public function logout_button() {
-			return $this->get_view('logout_button');
-		}
-
 		public function authenticate($csrf_value , $username , $password , $redirect_target = null) {
 
 			if ( CSRF::verify_token($csrf_value , 'login-form') === false ) {
