@@ -56,7 +56,9 @@ export default class AuthViews extends React.Component {
 
 					USERNAME_MAX_LENGTH: 10,
 					PASSWORD_MIN_LENGTH: 5,
-					NAME_MAX_LENGTH: 20
+					NAME_MAX_LENGTH: 20,
+
+					DID_NOT_ACCEPT_TO_SIGNUP_TO_NEWSLETTER: 11
 				}}
 				isLoginFormVisible={isLoginFormVisible}
 				isSignupFormVisible={isSignupFormVisible}

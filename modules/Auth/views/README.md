@@ -21,15 +21,56 @@ npm install react-login-panel --save
 	loginFormFields={[
 		{
 			id: 'username',
+			defaultValue:'a_default_value',
 			element: <input placeholder="Username" />
 		},
 		{
 			id: 'password',
-			element: <input placeholder="Password" type="password" />
+			element: ({ onChange , value , disabled }) => (
+				<input
+					disabled={disabled}
+					onChange={({target}) => {
+					
+						console.log(
+							'password changed to:' ,
+							target.value
+						);
+					
+						onChange(target.value)}
+					}
+					placeholder="Password"
+					type="password"
+					value={value}
+				/>
+			)
+		},
+		{
+			id: 'csrfToken',
+			defaultValue: '23498adgfisfdghnb',
+			element: ({ onChange , value , disabled }) => (
+				<div>
+					<br />CSRF token: 
+					<input
+						disabled={true}
+						onChange={({target}) => {
+							onChange(target.value)
+						}}
+						placeholder="csrf"
+						type="text"
+						value={value}
+					/><br /><br />
+				</div>
+			)
 		}
 	]}
-	onSubmitLoginForm={() => alert('Logged in!')}
-	onSubmitSignupForm={() => alert('Signed up!')}
+	onSubmitLoginForm={data => {
+		alert('Logged in! Check your console');
+		console.log(data);
+	}}
+	onSubmitSignupForm={data => {
+		alert('Signed up! Check your console');
+		console.log(data);
+	}}
 	signingUp={false}
 	signupFormFields={[
 		{
@@ -166,6 +207,32 @@ npm install react-login-panel --save
 						return <div>Unknown Error</div>;
 				}
 			}
+		},
+		{
+			id:'subscribe-to-newsletter',
+			defaultValue:false,
+			element:({onChange , value}) => (
+				<div>
+					<input
+						type="checkbox"
+						checked={value}
+						onChange={({target}) => onChange(target.checked)}
+					/>
+					{" "} Subscribe to newsletter
+				</div>
+			),
+			validator: val => (
+				
+				val
+				
+				||
+				
+				props.constants.DID_NOT_ACCEPT_TO_SIGNUP_TO_NEWSLETTER
+				
+			),
+			errorFeedbackElement:() => (
+				<div><strong>You must subscribe!</strong></div>
+			)
 		}
 	]}
 	toggleLoginForm={props.toggleLoginForm}
