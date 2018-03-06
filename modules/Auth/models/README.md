@@ -12,12 +12,31 @@ user_groups => array of(UserGroup)
 
 ## Methods:
 
-> *bool* - `$user->is_groupmember_of($group_id)` ()
+> *bool* - `$user->is_groupmember_of($group)` ()
 
 Returns `true` if the User is a member of the group, `false` otherwise.
 ```php
+// Example 1:
+// search using group id
 $group_id = 235;
-$user->is_groupmember_of($group_id); // returns true/false
+$user->is_groupmember_of($group_id);
+
+
+// Example 2:
+// search using group name
+$group_name = "admin" ;
+$user->is_groupmember_of($group_name);
+
+
+// Example 3:
+// search using UserGroup object
+$group = \UserGroup::search([
+	"where" => [
+		"sql" => "name = ?" ,
+		"params" => ["admin"]
+	]
+]);
+$user->is_groupmember_of($group);
 ```
 
 ---------------------------------
