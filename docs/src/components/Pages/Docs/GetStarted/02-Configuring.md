@@ -10,6 +10,9 @@ done in case the framework is to be used simply as a library, or without MVC str
 
 ## Default Values
 ```php
+// General
+$config["dev_mode"] = false;
+
 // CSRF - see docs: Security/CSRF
 $config['csrf_history_max_tokens'] = 15;
 $config['single_use_tokens']       = false;
