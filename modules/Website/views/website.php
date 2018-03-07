@@ -3,6 +3,7 @@
 	<head>
 		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 		<meta charset="UTF-8">
+		<meta name="description" content="axe framework - A PHP & React based framework for building web applications"/>
 		<title>Axe Framework Documentation</title></head>
 		<style>
 			<?php
