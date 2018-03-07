@@ -87,7 +87,7 @@ module.exports = env => {
 			hotOnly: true,
 			compress: true,
 			port: 9155,
-			host: 'localhost',
+			host: '0.0.0.0',
 			headers: {
 				'Access-Control-Allow-Origin': '*',
 				'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
