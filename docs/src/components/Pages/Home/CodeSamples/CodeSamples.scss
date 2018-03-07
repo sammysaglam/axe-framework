@@ -16,6 +16,38 @@
 		width          : 50%;
 		padding-bottom : 0;
 
+		&:nth-of-type(1) {
+			@include pop-in(0.5s);
+
+			.line-numbers-rows {
+				@include fade-in(0.6s, 0.7s);
+			}
+		}
+
+		&:nth-of-type(2) {
+			@include pop-in(0.3s);
+
+			.line-numbers-rows {
+				@include fade-in(0.6s, 0.7s);
+			}
+		}
+
+		&:nth-of-type(3) {
+			@include pop-in(0.7s);
+
+			.line-numbers-rows {
+				@include fade-in(0.6s, 0.7s);
+			}
+		}
+
+		&:nth-of-type(4) {
+			@include pop-in(0.4s);
+
+			.line-numbers-rows {
+				@include fade-in(0.6s, 0.7s);
+			}
+		}
+
 		@media screen and (max-width : 768px) {
 			width : 100%;
 		}
@@ -33,6 +65,10 @@
 		&__render-source {
 			letter-spacing : -0.03125rem;
 			word-spacing   : 0;
+
+			@media screen and (max-width : 425px) {
+				margin : 0 -1rem;
+			}
 		}
 	}
 

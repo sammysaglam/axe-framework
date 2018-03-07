@@ -8,16 +8,18 @@ const Logo = ({ hideImage, hideText, link }) => {
 	const logo = (
 		<React.Fragment>
 			{hideImage ? null : <LogoImage />}
-			{hideText ? null : <span>axe framework</span>}
+			{hideText ? null : <span className="logo__text">axe framework</span>}
 		</React.Fragment>
 	);
 
 	return link ? (
 		<div className="logo">{logo}</div>
 	) : (
-		<Link className="logo" url="/">
-			{logo}
-		</Link>
+		<h1>
+			<Link className="logo" url="/">
+				{logo}
+			</Link>
+		</h1>
 	);
 };
 

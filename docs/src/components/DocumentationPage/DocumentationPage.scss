@@ -82,6 +82,12 @@
 	.axe-markdown {
 		padding-right : 3rem;
 
+		transform-origin: 0 500px;
+		@include pop-in-and-fade-in(0.3s);
+		.line-numbers-rows {
+			@include fade-in(0.6s, 0.3s);
+		}
+
 		> blockquote {
 			margin : 0.5rem 0;
 		}

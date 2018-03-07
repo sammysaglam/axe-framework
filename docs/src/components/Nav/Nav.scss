@@ -48,4 +48,47 @@
 		}
 
 	}
+
+	// logo in nav
+	.logo {
+		margin-right : 3vw;
+	}
+
+	// mobile styles
+	@media screen and (max-width : 760px) {
+		&__github-links {
+			display : none;
+		}
+	}
+
+	@media screen and (max-width : 640px) {
+		&__links-wrapper {
+			max-width: 350px;
+		}
+		&__link {
+			padding : 0.5rem;
+		}
+		.logo {
+			margin-right : 3vw;
+		}
+	}
+
+	@media screen and (max-width : 510px) {
+		&__links-wrapper {
+			max-width: 300px;
+		}
+		&__link {
+			padding : 0;
+		}
+
+		.logo__text {
+			display : none;
+		}
+	}
+
+	@media screen and (max-width : 320px) {
+		.logo {
+			margin-right : 0.25rem;
+		}
+	}
 }

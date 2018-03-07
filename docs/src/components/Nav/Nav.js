@@ -21,7 +21,7 @@ const Nav = () => (
 					<span>Modules</span>
 				</Link>
 			</nav>
-			<div>
+			<div className="nav__github-links">
 				<Link className="nav__link nav__link--github" newTab={true} type="html-a-tag" url="https://github.com/sammysaglam/axe-framework/releases">
 					v0.1.0
 				</Link>

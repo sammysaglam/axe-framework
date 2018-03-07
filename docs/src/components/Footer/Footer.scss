@@ -6,7 +6,7 @@
 	&__inner {
 		max-width       : $page-max-width;
 		margin          : auto;
-		height          : 100vh;
+		height          : calc(100vh - 2.6125rem);
 		padding         : 5rem 1rem;
 		color           : $color-white;
 		text-align      : center;

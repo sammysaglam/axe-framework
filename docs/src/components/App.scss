@@ -27,6 +27,58 @@ $color-tertiary : #0F2F2C;
 $color-white : #FFFFFF;
 $page-max-width : 1200px;
 
+// animations
+@keyframes pop-in {
+	from {
+		transform : scale3d(0, 0, 0);
+	}
+	to {
+		transform : scale3d(1, 1, 1);
+	}
+}
+
+@mixin pop-in($duration) {
+	animation : pop-in $duration cubic-bezier(.86, .28, 0, 1.17);
+}
+
+@keyframes fade-in {
+	from {
+		opacity : 0;
+	}
+	to {
+		opacity : 1;
+	}
+}
+
+@mixin fade-in($duration,$delay) {
+	opacity   : 0;
+	animation : fade-in $duration $delay forwards;
+}
+
+@keyframes pop-in-and-fade-in {
+	from {
+		opacity   : 0;
+		transform : scale3d(0, 0, 0);
+	}
+	to {
+		opacity   : 1;
+		transform : scale3d(1, 1, 1);
+	}
+}
+
+@mixin pop-in-and-fade-in($duration) {
+	opacity   : 0;
+	animation : pop-in-and-fade-in $duration forwards cubic-bezier(.86, .28, 0, 1.17);
+}
+
+@mixin jelly-click($scale: 1.125) {
+	transition : transform 0.3s cubic-bezier(.86, .28, 0, 1.17);
+
+	&:active {
+		transform : scale3d($scale, $scale, $scale);
+	}
+}
+
 // general
 * {
 	box-sizing : border-box;
@@ -48,14 +100,6 @@ body, td {
 
 #app {
 	margin-top : 2.5rem;
-}
-
-@mixin jelly-click($scale: 1.125) {
-	transition : transform 0.3s cubic-bezier(.86, .28, 0, 1.17);
-
-	&:active {
-		transform : scale3d($scale, $scale, $scale);
-	}
 }
 
 .axe-markdown {
@@ -102,7 +146,7 @@ body, td {
 		}
 
 		code {
-			font-size: 1rem;
+			font-size : 1rem;
 		}
 	}
 

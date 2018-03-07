@@ -16,6 +16,11 @@ const DocumentationPageGenerator = ({ baseUrl, pages }) => {
 		))
 	];
 
+	// call window resize to correct line numbers
+	setTimeout(() => {
+		window.dispatchEvent(new Event('resize'));
+	}, 200);
+
 	return (
 		<React.Fragment>
 			<Route
