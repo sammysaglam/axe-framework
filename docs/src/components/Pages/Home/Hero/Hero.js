@@ -8,7 +8,7 @@ const Hero = () => (
 			<Logo hideText={true} />
 		</div>
 		<div className="hero__text-wrapper">
-			A PHP & React based framework for building web applications
+			<h2 className="hero__text">A PHP & React based framework for building web applications</h2>
 			<div className="hero__buttons-wrapper">
 				<Button className="hero__button" type="router-link" url="/docs/get-started/installation" variant="call-to-action">
 					Get Started
