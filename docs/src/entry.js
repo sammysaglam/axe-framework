@@ -20,7 +20,13 @@ if (!isServerSide) {
 			</AppContainer>
 		);
 
-		ReactDOM.render(renderResult, document.getElementById('app'));
+		const targetElement = document.getElementById('app');
+
+		if (targetElement.innerHTML === 'no-ssr') {
+			ReactDOM.render(renderResult, targetElement);
+		} else {
+			ReactDOM.hydrate(renderResult, targetElement);
+		}
 	};
 	render(App);
 
