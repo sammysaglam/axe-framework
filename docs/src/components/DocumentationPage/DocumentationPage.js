@@ -6,37 +6,80 @@ import reduce from 'reduce-object';
 import { urlFriendly } from '../../utils/urlFriendly';
 import TableOfContents from './TableOfContents/TableOfContents';
 
-const DocumentationPageGenerator = ({ baseUrl, pages }) => {
-	const firstPageLabel = Object.keys(pages)[0];
+export default class DocumentationPageGenerator extends React.Component {
+	constructor(props) {
+		super(props);
 
-	const toRoutesWithPages = (sections, subpages, groupLabel) => [
-		...sections,
-		...subpages.map(({ label, view }) => (
-			<Route key={groupLabel + '/' + label} path={`${baseUrl}/${urlFriendly(groupLabel)}/${urlFriendly(label)}`} render={() => view} />
-		))
-	];
+		this.state = {
+			isMobileTableOfContentsVisible: false
+		};
 
-	// call window resize to correct line numbers
-	setTimeout(() => {
-		window.dispatchEvent(new Event('resize'));
-	}, 200);
+		this.onShowMobileTableOfContents = this.onShowMobileTableOfContents.bind(this);
+		this.onHideMobileTableOfContents = this.onHideMobileTableOfContents.bind(this);
+	}
 
-	return (
-		<React.Fragment>
-			<Route
-				component={() => <Redirect to={`${baseUrl}/${urlFriendly(firstPageLabel)}/${urlFriendly(pages[firstPageLabel][0].label)}`} />}
-				exact={true}
-				path={baseUrl}
-			/>
-			<div className="documentation-page">
-				<div className="documentation-page__inner">
-					<div className="documentation-page__markdown-wrapper">{reduce(pages, toRoutesWithPages, [])}</div>
-					<TableOfContents baseUrl={baseUrl} pages={pages} />
+	onShowMobileTableOfContents(event) {
+		if (event) {
+			event.stopPropagation();
+		}
+
+		this.setState({
+			isMobileTableOfContentsVisible: true
+		});
+	}
+
+	onHideMobileTableOfContents(event) {
+		if (event) {
+			event.stopPropagation();
+		}
+
+		this.setState({
+			isMobileTableOfContentsVisible: false
+		});
+	}
+
+	render() {
+		const { baseUrl, pages } = this.props;
+		const { isMobileTableOfContentsVisible } = this.state;
+		const { onShowMobileTableOfContents, onHideMobileTableOfContents } = this;
+
+		const firstPageLabel = Object.keys(pages)[0];
+
+		const toRoutesWithPages = (sections, subpages, groupLabel) => [
+			...sections,
+			...subpages.map(({ label, view }) => (
+				<Route key={groupLabel + '/' + label} path={`${baseUrl}/${urlFriendly(groupLabel)}/${urlFriendly(label)}`} render={() => view} />
+			))
+		];
+
+		// call window resize to correct line numbers
+		setTimeout(() => {
+			window.dispatchEvent(new Event('resize'));
+		}, 200);
+
+		return (
+			<React.Fragment>
+				<Route
+					component={() => <Redirect to={`${baseUrl}/${urlFriendly(firstPageLabel)}/${urlFriendly(pages[firstPageLabel][0].label)}`} />}
+					exact={true}
+					path={baseUrl}
+				/>
+				<div className="documentation-page" onClick={onHideMobileTableOfContents}>
+					<div className="documentation-page__inner">
+						<div className="documentation-page__markdown-wrapper">{reduce(pages, toRoutesWithPages, [])}</div>
+						<TableOfContents
+							baseUrl={baseUrl}
+							isVisibleForMobile={isMobileTableOfContentsVisible}
+							onHideMobileTableOfContents={onHideMobileTableOfContents}
+							onShowMobileTableOfContents={onShowMobileTableOfContents}
+							pages={pages}
+						/>
+					</div>
 				</div>
-			</div>
-		</React.Fragment>
-	);
-};
+			</React.Fragment>
+		);
+	}
+}
 
 DocumentationPageGenerator.propTypes = {
 	baseUrl: PropTypes.string.isRequired,
@@ -49,5 +92,3 @@ DocumentationPageGenerator.propTypes = {
 		)
 	).isRequired
 };
-
-export default DocumentationPageGenerator;

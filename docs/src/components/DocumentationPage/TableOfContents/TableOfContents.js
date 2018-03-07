@@ -5,9 +5,22 @@ import reduce from 'reduce-object';
 import { urlFriendly } from '../../../utils/urlFriendly';
 import Link from '../../Link/Link';
 
-const TableOfContents = ({ baseUrl, pages }) => (
-	<div className="documentation-page__table-of-contents-wrapper">
-		<div className="documentation-page__table-of-contents">
+const TableOfContents = ({ baseUrl, pages, isVisibleForMobile, onShowMobileTableOfContents, onHideMobileTableOfContents }) => (
+	<div
+		className={`documentation-page__table-of-contents-wrapper ${
+			isVisibleForMobile ? 'documentation-page__table-of-contents-wrapper--mobile-visible' : ''
+		}`}
+		onClick={event => {
+			event.stopPropagation();
+		}}
+	>
+		<div className="documentation-page__show-table-of-contents-button" onClick={onShowMobileTableOfContents}>
+			≡
+		</div>
+		<div className="documentation-page__hide-table-of-contents-button" onClick={onHideMobileTableOfContents}>
+			X
+		</div>
+		<div className={`documentation-page__table-of-contents ${isVisibleForMobile ? 'documentation-page__table-of-contents--mobile-visible' : ''}`}>
 			<div className="documentation-page__table-of-contents-inner">
 				{reduce(
 					pages,
@@ -16,7 +29,7 @@ const TableOfContents = ({ baseUrl, pages }) => (
 						<LinkGroup groupLabel={groupLabel} key={groupLabel}>
 							{subpages.map(({ label }) => (
 								<li className="documentation-page__list-item" key={`${groupLabel}/${label}`}>
-									<Link url={`${baseUrl}/${urlFriendly(groupLabel)}/${urlFriendly(label)}`}>{label}</Link>
+									<Link onClick={onHideMobileTableOfContents} url={`${baseUrl}/${urlFriendly(groupLabel)}/${urlFriendly(label)}`}>{label}</Link>
 								</li>
 							))}
 						</LinkGroup>
@@ -30,6 +43,9 @@ const TableOfContents = ({ baseUrl, pages }) => (
 
 TableOfContents.propTypes = {
 	baseUrl: PropTypes.string.isRequired,
+	isVisibleForMobile: PropTypes.bool.isRequired,
+	onHideMobileTableOfContents: PropTypes.func.isRequired,
+	onShowMobileTableOfContents: PropTypes.func.isRequired,
 	pages: PropTypes.objectOf(
 		PropTypes.arrayOf(
 			PropTypes.shape({
