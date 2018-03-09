@@ -1,0 +1,10 @@
+{
+	"config": {
+		"vendor-dir": "system/libs"
+	},
+	"require": {
+		"cakephp/utility": "^3.5",
+		"ezyang/htmlpurifier": "^4.10",
+		"electrolinux/phpquery": "^0.9.6"
+	}
+}

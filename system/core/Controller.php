@@ -2,6 +2,8 @@
 
 	namespace Axe;
 
+	use Cake\Utility\Inflector;
+
 	class Controller {
 
 		final public function __construct() { }
@@ -159,7 +161,8 @@
 			$raw_name = trim($raw_name , '/');
 			$uri_parts = explode('/' , $raw_name);
 			$controller_name = end($uri_parts);
-			$controller_name = \Inflector::camelize((substr($controller_name , 0 , 4) == 'mod-') ? substr($controller_name , 4) : str_replace('-','_',$controller_name));
+			$controller_name = Inflector::camelize((substr($controller_name , 0 , 4) == 'mod-') ? substr($controller_name , 4) : str_replace('-','_',
+				$controller_name));
 
 			// get controller's dir path & namespace
 			$controller_path = '';
@@ -190,7 +193,7 @@
 				if ( substr($part , 0 , 4) == 'mod-' ) {
 					if ( !empty($prev_was_module) ) {
 
-						$module_name = \Inflector::camelize(
+						$module_name = Inflector::camelize(
 							str_replace(
 								'-' ,
 								'_' ,
@@ -201,7 +204,7 @@
 							)
 						);
 
-						$controller_path .= 'modules' . DIRECTORY_SEPARATOR . \Inflector::camelize($module_name) . DIRECTORY_SEPARATOR;
+						$controller_path .= 'modules' . DIRECTORY_SEPARATOR . Inflector::camelize($module_name) . DIRECTORY_SEPARATOR;
 						$controller_namespace .= $module_name . '\\';
 						$prev_was_module = true;
 
@@ -218,7 +221,7 @@
 					if ( !empty($prev_was_module) ) {
 						$controller_path .= 'controllers' . DIRECTORY_SEPARATOR;
 					}
-					$controller_path .= \Inflector::camelize(str_replace('-','_',$part)) . DIRECTORY_SEPARATOR;
+					$controller_path .= Inflector::camelize(str_replace('-','_',$part)) . DIRECTORY_SEPARATOR;
 					$prev_was_module = false;
 				}
 			}

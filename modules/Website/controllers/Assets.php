@@ -3,6 +3,7 @@
 	namespace Website\Controllers;
 
 	use Axe\Controller;
+	use Cake\Utility\Inflector;
 
 	class Assets extends Controller {
 
@@ -52,7 +53,7 @@
 
 				// is a module
 				if ( empty($enter_view_folder) && substr($part , 0 , 4) == 'mod_' ) {
-					$path .= 'modules' . DIRECTORY_SEPARATOR . \Inflector::camelize(substr($part , 4)) . DIRECTORY_SEPARATOR;
+					$path .= 'modules' . DIRECTORY_SEPARATOR . Inflector::camelize(substr($part , 4)) . DIRECTORY_SEPARATOR;
 
 					// not a module
 				} else {

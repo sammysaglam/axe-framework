@@ -2,6 +2,8 @@
 
 	namespace Axe;
 
+	use Cake\Utility\Inflector;
+
 	class ORM {
 
 		public static function allowed_fields() {
@@ -304,7 +306,7 @@
 			if ( defined($child_class_name_fully_qualified . '::TABLE_NAME') ) {
 				$table_name = $child_class_name_fully_qualified::TABLE_NAME;
 			} else {
-				$table_name = \Inflector::pluralize(\Inflector::underscore($child_class_name));
+				$table_name = Inflector::pluralize(Inflector::underscore($child_class_name));
 			}
 
 			return $table_name;

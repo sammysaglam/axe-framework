@@ -64,7 +64,6 @@
 			if ( ($user = \Auth::get_logged_in_user(array("user_groups"))) && $content->is_user_allowed_to_edit($user) ) {
 
 				// purify HTML content from XSS & injection attacks
-				\Axe::load_library('htmlpurifier-4.9.3/library/HTMLPurifier.auto');
 				$config = \HTMLPurifier_Config::createDefault();
 				$config->set('Attr.AllowedFrameTargets' , array("_blank"));
 				$config->set('HTML.Nofollow' , true);

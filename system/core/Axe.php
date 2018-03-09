@@ -46,6 +46,7 @@
 			self::load_required_files();
 			self::load_config();
 			self::determine_dev_mode();
+			self::setup_libs_autoload();
 			self::define_autloader();
 			self::set_exception_handler();
 			self::load_db();
@@ -140,6 +141,10 @@
 				error_reporting(0);
 			}
 
+		}
+
+		private static function setup_libs_autoload() {
+			require(FRAMEWORK_PATH . 'system/libs/autoload.php');
 		}
 
 		private static function define_autloader() {
@@ -240,9 +245,6 @@
 							FRAMEWORK_PATH . $path . 'models' . DIRECTORY_SEPARATOR . $class_name . '.php'
 						)
 					) ) {
-
-						// next check if system library exists
-					} else if ( file_exists($filename = realpath(FRAMEWORK_PATH . 'system' . DIRECTORY_SEPARATOR . 'libs') . DIRECTORY_SEPARATOR . $class_name . '.php') ) {
 
 					} else {
 
