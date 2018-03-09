@@ -6,18 +6,18 @@
 
 			// get salt from the database for password hashing
 			$user_search = \Auth\User::search(
-				array(
-					"where"  => array(
+				[
+					"where"  => [
 						"sql"    => 'username = ?' ,
-						"params" => array($username)
-					) ,
-					"fields" => array(
+						"params" => [$username]
+					] ,
+					"fields" => [
 						"username" ,
 						"salt" ,
 						"password_hash" ,
 						"consecutive_invalid_logins"
-					)
-				)
+					]
+				]
 			);
 
 			// username is valid
@@ -80,17 +80,17 @@
 
 			// get salt from the database for password hashing
 			$user_search = \Auth\User::search(
-				array(
-					"where"  => array(
+				[
+					"where"  => [
 						"sql"    => 'id = ?' ,
-						"params" => array($_SESSION['user_id'])
-					) ,
-					"fields" => array(
+						"params" => [$_SESSION['user_id']]
+					] ,
+					"fields" => [
 						"username" ,
 						"salt" ,
 						"password_hash"
-					)
-				)
+					]
+				]
 			);
 
 			// username is valid
@@ -102,15 +102,15 @@
 				// password hashes match
 				if ( hash_equals($_SESSION['login_string'] , hash_pbkdf2('sha512' , $user->password_hash . $_SESSION['user_agent'] , $user->salt , 20)) ) {
 					return \Auth\User::search(
-						array(
-							"where"  => array(
+						[
+							"where"  => [
 								"sql"    => 'id = ?' ,
-								"params" => array($user->id)
-							) ,
-							"fields" => isset_or($fields , array(
+								"params" => [$user->id]
+							] ,
+							"fields" => isset_or($fields , [
 								"username"
-							))
-						)
+							])
+						]
 					)[0];
 
 				} else {

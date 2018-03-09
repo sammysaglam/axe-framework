@@ -22,7 +22,7 @@
 			return $this;
 		}
 
-		public function generate_markup($component , $props = array()) {
+		public function generate_markup($component , $props = []) {
 
 			$rjs = $this->rjs;
 

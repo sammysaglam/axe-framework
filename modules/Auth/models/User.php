@@ -9,28 +9,28 @@
 		const TABLE_NAME = 'axe-users';
 
 		public static function allowed_fields() {
-			return array(
+			return [
 				"username" ,
 				"email" ,
 				"password_hash" ,
 				"salt" ,
 				"consecutive_invalid_logins" ,
 				"user_groups" => UserGroup::get_allowed_fields()
-			);
+			];
 		}
 
 		public static function process_field($field) {
 
 			if ( $field == 'user_groups' ) {
-				return array(
-					"where"  => array(
+				return [
+					"where"  => [
 						"sql"    => 'id IN (SELECT `group` FROM `axe-user_group_memberships` WHERE `user` = ?)' ,
-						"params" => array('$id')
-					) ,
-					"fields" => array(
+						"params" => ['$id']
+					] ,
+					"fields" => [
 						"name"
-					)
-				);
+					]
+				];
 
 			}
 
@@ -43,11 +43,11 @@
 			$salt = bin2hex(random_bytes(64));
 			$password_hashed = hash_pbkdf2('sha512' , $data['password'] , $salt , 250);
 
-			$user_data = array(
+			$user_data = [
 				"username"      => $data['username'] ,
 				"password_hash" => $password_hashed ,
 				"salt"          => $salt
-			);
+			];
 
 			if ( isset($data['name']) ) $user_data['name'] = $data['name'];
 			if ( isset($data['email']) ) $user_data['email'] = $data['email'];
@@ -57,12 +57,12 @@
 		}
 
 		public function inc_consecutive_invalid_logins() {
-			new DBQuery('UPDATE `' . self::TABLE_NAME . '` SET consecutive_invalid_logins = consecutive_invalid_logins + 1 WHERE id = ? ;' , array($this->id));
+			new DBQuery('UPDATE `' . self::TABLE_NAME . '` SET consecutive_invalid_logins = consecutive_invalid_logins + 1 WHERE id = ? ;' , [$this->id]);
 			$this->consecutive_invalid_logins++;
 		}
 
 		public function reset_consecutive_invalid_logins() {
-			new DBQuery('UPDATE `' . self::TABLE_NAME . '` SET consecutive_invalid_logins = 0 WHERE id = ? ;' , array($this->id));
+			new DBQuery('UPDATE `' . self::TABLE_NAME . '` SET consecutive_invalid_logins = 0 WHERE id = ? ;' , [$this->id]);
 			$this->consecutive_invalid_logins = 0;
 		}
 
@@ -72,15 +72,15 @@
 				$group_id = $group;
 
 			} else if ( is_string($group) ) {
-				$group_search = UserGroup::search(array(
-					"where"  => array(
+				$group_search = UserGroup::search([
+					"where"  => [
 						"sql"    => "name = ?" ,
-						"params" => array($group)
-					) ,
-					"fields" => array(
+						"params" => [$group]
+					] ,
+					"fields" => [
 						"name"
-					)
-				));
+					]
+				]);
 
 				if ( empty($group_search) ) {
 					throw new \Exception('Group with name: "' . $group . '" does not exist');

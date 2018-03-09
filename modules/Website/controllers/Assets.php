@@ -8,7 +8,7 @@
 	class Assets extends Controller {
 
 		private static function allowed_file_extensions() {
-			return array(
+			return [
 				'png' ,
 				'jpg' ,
 				'jpeg' ,
@@ -20,7 +20,7 @@
 				'otf' ,
 				'woff' ,
 				'woff2'
-			);
+			];
 		}
 
 		public function echo_asset() {

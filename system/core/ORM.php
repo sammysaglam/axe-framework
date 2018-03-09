@@ -7,17 +7,17 @@
 	class ORM {
 
 		public static function allowed_fields() {
-			return array();
+			return [];
 		}
 
 		public static function get_allowed_fields() {
 			return function() {
 				$class_name = get_called_class();
 
-				return array(
+				return [
 					"__CLASS__"      => $class_name ,
 					"allowed_fields" => $class_name::allowed_fields()
-				);
+				];
 			};
 		}
 
@@ -66,10 +66,10 @@
 			} , [&$params]);
 
 			// return
-			return array(
+			return [
 				"sql"    => $sql ,
 				"params" => $params
-			);
+			];
 		}
 
 		public static function create_new($data , $fields_to_get_after_creation = null) {
@@ -83,18 +83,18 @@
 			// return newly created objects if necessary
 			if ( isset($fields_to_get_after_creation) ) {
 
-				return self::search(array(
-					"where"  => array(
+				return self::search([
+					"where"  => [
 						"sql"    => "id >= ?" ,
-						"params" => array($result->last_insert_id())
-					) ,
+						"params" => [$result->last_insert_id()]
+					] ,
 					"fields" => $fields_to_get_after_creation
-				));
+				]);
 			}
 		}
 
 		public function delete() {
-			new DBQuery("DELETE FROM `" . self::get_table_name() . "` WHERE id = ? ;" , array($this->id));
+			new DBQuery("DELETE FROM `" . self::get_table_name() . "` WHERE id = ? ;" , [$this->id]);
 
 			// reset properties (since we can't self-destruct object)
 			foreach ( $this as $property => $value ) {
@@ -106,7 +106,7 @@
 		public static function search($settings , $debug_show_query = false) {
 
 			// default search settings
-			$settings = array(
+			$settings = [
 				"where"              => isset_or($settings["where"] , "all") ,
 				"fields"             => isset_or($settings["fields"] , "none") ,
 				"sort"               => isset_or($settings["sort"] , "default") ,
@@ -114,33 +114,33 @@
 				"page"               => isset_or($settings["page"] , 0) ,
 				"use_field_as_index" => isset_or($settings["use_field_as_index"] , false) ,
 				"return_first"       => isset_or($settings["return_first"] , false)
-			);
+			];
 
 			// init
 			$child_class_name = get_called_class();
 			$select_query = '';
-			$joins = array();
-			$children = array();
+			$joins = [];
+			$children = [];
 
 			// allowed fields
 			$allowed_fields = $child_class_name::get_allowed_fields();
 
 			// get all records
 			if ( $settings['where'] == 'all' ) {
-				$settings['where'] = array(
+				$settings['where'] = [
 					"sql"    => "1=1" ,
 					"params" => null
-				);
+				];
 			}
 
 			// don't retrieve any fields
 			if ( $settings['fields'] == 'none' ) {
-				$settings['fields'] = array();
+				$settings['fields'] = [];
 			}
 
 			// process fields according to class rules
-			$processed_fields = array();
-			$field_not_requrining_validation = array();
+			$processed_fields = [];
+			$field_not_requrining_validation = [];
 			foreach ( $settings['fields'] as $key => $field ) {
 				if ( ($return_val = $child_class_name::process_field($field)) === true ) {
 					$processed_fields[$key] = $field;
@@ -162,7 +162,8 @@
 
 				// dont allow adding of 'id' field -> since it already is called on all queries
 				if ( $field == 'id' ) {
-					throw new \Exception($child_class_name . '::search -> field "id" is already included in results. please do not add to list of fields' , 400);
+					throw new \Exception($child_class_name . '::search -> field "id" is already included in results. please do not add to list of fields' ,
+						400);
 
 					return false;
 
@@ -173,15 +174,26 @@
 					$children[str_replace('$' , '' , $key)] = $field;
 					continue;
 
-				} else if ( ($search_index = array_search(preg_replace('/\$[^-]+/' , '$' , $field) , $allowed_fields()['allowed_fields'])) !== false && $search_index !== '__CLASS__' ) {
+				} else if ( ($search_index = array_search(preg_replace('/\$[^-]+/' , '$' , $field) , $allowed_fields()['allowed_fields'])) !== false &&
+				            $search_index !== '__CLASS__' ) {
 					// allowed field, so do nothing
 
 				} else {
 
 					// field does not in the allowed list, so give error
 					throw new \Exception(
-						$child_class_name . '::search -> invalid field: "' . (is_array($field) ? $key : $field) . '"' . PHP_EOL . PHP_EOL . '<br /><br />' .
-						'Allowed fields are: ' . PHP_EOL . '<br /> - <pre style="font-size:12px ; color:#FFF ;">' . print_r($allowed_fields()['allowed_fields'] , true) . '</pre>' ,
+						$child_class_name .
+						'::search -> invalid field: "' .
+						(is_array($field) ? $key : $field) .
+						'"' .
+						PHP_EOL .
+						PHP_EOL .
+						'<br /><br />' .
+						'Allowed fields are: ' .
+						PHP_EOL .
+						'<br /> - <pre style="font-size:12px ; color:#FFF ;">' .
+						print_r($allowed_fields()['allowed_fields'] , true) .
+						'</pre>' ,
 						400
 					);
 
@@ -198,7 +210,7 @@
 
 			// build sort query
 			if ( $settings['sort'] == 'default' ) {
-				$settings['sort'] = array();
+				$settings['sort'] = [];
 			}
 			$sort_query = implode(' , ' , $settings['sort']);
 			if ( $sort_query != '' ) {
@@ -221,7 +233,7 @@
 			$db_results = $query->results();
 
 			// create array of objects, with object's id as the key
-			$objects = array();
+			$objects = [];
 			foreach ( $db_results as $key => $obj ) {
 				if ( $settings['use_field_as_index'] !== false ) {
 					$index_field_name = $settings['use_field_as_index'];
@@ -233,7 +245,7 @@
 				foreach ( $children as $index => $query_settings ) {
 
 					// build params
-					$new_params = array();
+					$new_params = [];
 					foreach ( $query_settings['where']['params'] as $param ) {
 						if ( substr($param , 0 , 1) === '$' ) {
 							$param = ltrim($param , '$');
@@ -246,18 +258,18 @@
 
 					// run query
 					$objects[$key]->$index = $query_settings['class_name']::search(
-						array(
-							"where"              => array(
+						[
+							"where"              => [
 								"sql"    => $query_settings['where']['sql'] ,
 								"params" => $new_params
-							) ,
+							] ,
 							"fields"             => isset($query_settings['fields']) ? $query_settings['fields'] : null ,
 							"sort"               => isset($query_settings['sort']) ? $query_settings['sort'] : null ,
 							"results_per_page"   => isset($query_settings['results_per_page']) ? $query_settings['results_per_page'] : null ,
 							"page"               => isset($query_settings['page']) ? $query_settings['page'] : null ,
 							"use_field_as_index" => isset($query_settings['use_field_as_index']) ? $query_settings['use_field_as_index'] : false ,
 							"return_first"       => isset($query_settings['return_first']) ? $query_settings['return_first'] : false
-						) ,
+						] ,
 						$debug_show_query
 					);
 				}

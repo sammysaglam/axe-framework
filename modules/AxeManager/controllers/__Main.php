@@ -8,7 +8,7 @@
 	class __Main extends Controller {
 
 		public function _construct() {
-			if ( !DEV_MODE ) exit('Dev Mode must be active') ;
+			if ( !DEV_MODE ) exit('Dev Mode must be active');
 		}
 
 		public function index() {
@@ -18,9 +18,9 @@
 			$html_head = new HtmlHead();
 			$html_head->add_script($website_controller->get_js_path('libs/angular_bundle.js'));
 
-			return $this->get_view('angular_app',array(
+			return $this->get_view('angular_app' , [
 				"html_head" => $html_head
-			));
+			]);
 		}
 
 	}

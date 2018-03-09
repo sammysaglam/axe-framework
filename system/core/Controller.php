@@ -30,24 +30,25 @@
 				$current_version = 0;
 
 				// migration not found so create new
-				$current_migration_info = (object)array(
+				$current_migration_info = (object)[
 					"current_version" => 0
-				);
+				];
 			}
 
 			// get all migration files above the current version
-			$migrations_to_run = array();
+			$migrations_to_run = [];
 			foreach ( glob($this->controller_info->migrations_path . DIRECTORY_SEPARATOR . "*.php") as $filename ) {
 
 				// match the required filename format for a migration
-				if ( preg_match('@.+(?:' . preg_quote(DIRECTORY_SEPARATOR) . '|' . preg_quote('/') . '|' . preg_quote('\\') . ')master-([0-9]+)\.php@' , $filename , $matches) ) {
+				if ( preg_match('@.+(?:' . preg_quote(DIRECTORY_SEPARATOR) . '|' . preg_quote('/') . '|' . preg_quote('\\') . ')master-([0-9]+)\.php@' ,
+					$filename , $matches) ) {
 
 					// check if the version number is above current
 					if ( ($version = floatval($matches[1])) > $current_migration_info->current_version ) {
-						$migrations_to_run[] = array(
+						$migrations_to_run[] = [
 							"filename" => $filename ,
 							"version"  => $version
-						);
+						];
 					}
 				}
 			}
@@ -67,8 +68,8 @@
 
 		}
 
-		public function run($method , $args = array()) {
-			echo call_user_func_array(array($this , $method) , $args);
+		public function run($method , $args = []) {
+			echo call_user_func_array([$this , $method] , $args);
 		}
 
 		protected function get_view($view_name , $params = null) {
@@ -123,7 +124,8 @@
 					<div>
 						Controller file was found @ "<?php echo $controller_info->controller_filepath; ?>"
 					</div>
-					<h3>is it possible you forgot to define the namespace in controller file as "<?php echo $controller_info->controller_namespace; ?>"</h3>
+					<h3>is it possible you forgot to define the namespace in controller file as "<?php echo $controller_info->controller_namespace; ?>
+						"</h3>
 					<?php
 					exit();
 				}
@@ -161,7 +163,7 @@
 			$raw_name = trim($raw_name , '/');
 			$uri_parts = explode('/' , $raw_name);
 			$controller_name = end($uri_parts);
-			$controller_name = Inflector::camelize((substr($controller_name , 0 , 4) == 'mod-') ? substr($controller_name , 4) : str_replace('-','_',
+			$controller_name = Inflector::camelize((substr($controller_name , 0 , 4) == 'mod-') ? substr($controller_name , 4) : str_replace('-' , '_' ,
 				$controller_name));
 
 			// get controller's dir path & namespace
@@ -221,7 +223,7 @@
 					if ( !empty($prev_was_module) ) {
 						$controller_path .= 'controllers' . DIRECTORY_SEPARATOR;
 					}
-					$controller_path .= Inflector::camelize(str_replace('-','_',$part)) . DIRECTORY_SEPARATOR;
+					$controller_path .= Inflector::camelize(str_replace('-' , '_' , $part)) . DIRECTORY_SEPARATOR;
 					$prev_was_module = false;
 				}
 			}
@@ -274,7 +276,7 @@
 			$module_path = substr($filepath , 0 , $module_end_pos);
 
 			// return controller info
-			return (object)array(
+			return (object)[
 				"controller_raw_name"   => $raw_name ,
 				"controller_name"       => $controller_name ,
 				"controller_namespace"  => $controller_namespace ,
@@ -283,7 +285,7 @@
 				"controller_filepath"   => $filepath ,
 				"migrations_path"       => $module_path . DIRECTORY_SEPARATOR . 'migrations' ,
 				"module_path"           => $module_path
-			);
+			];
 		}
 
 	}

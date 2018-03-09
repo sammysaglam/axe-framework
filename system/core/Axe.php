@@ -66,9 +66,9 @@
 			);
 
 			session_start(
-				array(
+				[
 					"sid_length" => 128
-				)
+				]
 			);
 
 			// some additional security by checking that the user agent hasn't changed
@@ -121,7 +121,7 @@
 			if ( file_exists($config_file = APPLICATION_PATH . 'config' . DIRECTORY_SEPARATOR . 'config.php') ) {
 				require($config_file);
 			}
-			$GLOBALS['axe_config'] = new \Axe\Config(isset_or($config , array()));
+			$GLOBALS['axe_config'] = new \Axe\Config(isset_or($config , []));
 
 		}
 
@@ -203,7 +203,9 @@
 								'"' .
 								"\n\n" .
 								'has the same class name, the module will be given priority, and the 2nd model will never load. Please either rename or delete one the files: ' .
-								'"' . $class_name . '.php"' .
+								'"' .
+								$class_name .
+								'.php"' .
 								"\n\n" .
 								'</div>'
 							);
@@ -329,7 +331,9 @@
 
 			// load & create DB connection
 			if ( !empty($GLOBALS['axe_config']->db_host) ) {
-				$GLOBALS['default_db'] = new \Axe\DB($GLOBALS['axe_config']->db_host , $GLOBALS['axe_config']->db_name , $GLOBALS['axe_config']->db_user , $GLOBALS['axe_config']->db_pass);
+				$GLOBALS['default_db'] =
+					new \Axe\DB($GLOBALS['axe_config']->db_host , $GLOBALS['axe_config']->db_name , $GLOBALS['axe_config']->db_user ,
+						$GLOBALS['axe_config']->db_pass);
 			}
 
 		}
@@ -354,9 +358,10 @@
 
 		public static function load_library($library_name) {
 
-			$library_name = str_replace(array('/' , '\\') , DIRECTORY_SEPARATOR , $library_name);
+			$library_name = str_replace(['/' , '\\'] , DIRECTORY_SEPARATOR , $library_name);
 
-			if ( file_exists($filename_1 = realpath(FRAMEWORK_PATH . 'system' . DIRECTORY_SEPARATOR . 'libs') . DIRECTORY_SEPARATOR . $library_name . '.php') ) {
+			if ( file_exists(
+				$filename_1 = realpath(FRAMEWORK_PATH . 'system' . DIRECTORY_SEPARATOR . 'libs') . DIRECTORY_SEPARATOR . $library_name . '.php') ) {
 				require_once($filename_1);
 
 			} else if ( file_exists($filename_2 = APPLICATION_PATH . 'libs' . DIRECTORY_SEPARATOR . $library_name . '.php') ) {

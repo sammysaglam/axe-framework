@@ -29,7 +29,7 @@
 
 	// get the classes defined inside a block of php code
 	function get_php_classes($php_code) {
-		$classes = array();
+		$classes = [];
 		$tokens = token_get_all($php_code);
 		$count = count($tokens);
 		for ( $i = 2 ; $i < $count ; $i++ ) {
@@ -56,7 +56,7 @@
 		return array_reduce(
 			array_keys($array) ,
 			function($cumulative , $key) use ($array , $callback) {
-				return $callback($cumulative,$array[$key],$key);
+				return $callback($cumulative , $array[$key] , $key);
 			} ,
 			""
 		);
@@ -65,7 +65,7 @@
 	// get mimetype based on file extension
 	function mime_type($file_ext) {
 
-		$mime_types = array(
+		$mime_types = [
 			"pdf"   => "application/pdf" ,
 			"exe"   => "application/octet-stream" ,
 			"zip"   => "application/zip" ,
@@ -96,7 +96,7 @@
 			"otf"   => "application/font-sfnt" ,
 			"woff"  => "application/font-woff" ,
 			"woff2" => "font/woff2"
-		);
+		];
 
 		return isset_or($mime_types[$file_ext] , false);
 	}
@@ -120,7 +120,7 @@
 	}
 
 	// file_get_contents_curl
-	function file_get_contents_curl($url , $use_proxy = false , $post_data = array() , $cookies_file = null , $debug_data = false) {
+	function file_get_contents_curl($url , $use_proxy = false , $post_data = [] , $cookies_file = null , $debug_data = false) {
 
 		if ( $debug_data ) echo 'Attempting to open URL ' . $url . "\n\n";
 
@@ -129,12 +129,12 @@
 		while ( empty($html) && $tries < 20 ) {
 
 			$ch = curl_init($url);
-			$headers = array(
+			$headers = [
 				'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8' ,
 				'Accept-Encoding: gzip, deflate' ,
 				'Accept-Language: en-US,en;q=0.5' ,
 				'User-Agent: Mozilla/5.0 (Windows NT 6.3; WOW64; rv:37.0) Gecko/20100101 Firefox/37.0'
-			);
+			];
 
 			if ( $use_proxy ) {
 				$proxy = get_proxy();
@@ -208,8 +208,10 @@
 			if ( ($date_diff->i > 10) || ($date_diff->h > 0) || ($date_diff->d > 0) || ($date_diff->m > 0) || ($date_diff->y > 0) ) $redownload = true;
 		}
 		if ( $redownload ) {
-			$downloaded_proxies = explode("\n" , file_get_contents('https://kingproxies.com/api/v2/proxies.txt?key=04774f9825b7bfd0fb84a109a64320&type=anonymous&protocols=http&alive=true'));
-			$proxies_file = array("proxies" => $downloaded_proxies);
+			$downloaded_proxies =
+				explode("\n" ,
+					file_get_contents('https://kingproxies.com/api/v2/proxies.txt?key=04774f9825b7bfd0fb84a109a64320&type=anonymous&protocols=http&alive=true'));
+			$proxies_file = ["proxies" => $downloaded_proxies];
 			$proxies_file["last_downloaded"] = date_format(date_create() , 'Y-m-d H:i:s');
 			$proxies_file["index_to_use"] = 0;
 			$proxies_file = json_encode($proxies_file);

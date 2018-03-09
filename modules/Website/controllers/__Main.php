@@ -25,7 +25,7 @@
 
 		public function index($location) {
 
-			$locationWithUnderscoresReplaced = str_replace('_','-',$location);
+			$locationWithUnderscoresReplaced = str_replace('_' , '-' , $location);
 
 			$this->website->update_params([
 				"ssr" => $this->generate_website_ssr('/' . $locationWithUnderscoresReplaced)

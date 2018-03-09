@@ -16,7 +16,7 @@
 
 		private $last_insert_id;
 		private $num_rows = 0;
-		private $results  = array();
+		private $results  = [];
 
 		public function __construct($query , $params = null , $class_name = null , DB $db = null) {
 
@@ -45,7 +45,8 @@
 			$this->num_rows += $statement->rowCount();
 
 			while ( $statement->nextrowset() ) {
-				$this->results = array_merge($this->results , $class_name ? $statement->fetchAll($fetch_style , $class_name) : $statement->fetchAll($fetch_style));
+				$this->results =
+					array_merge($this->results , $class_name ? $statement->fetchAll($fetch_style , $class_name) : $statement->fetchAll($fetch_style));
 				$this->num_rows += $statement->rowCount();
 			}
 		}

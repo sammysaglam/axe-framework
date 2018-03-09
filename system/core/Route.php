@@ -1,6 +1,6 @@
 <?php
 
-	$routes = array();
+	$routes = [];
 
 	class Route {
 
@@ -51,7 +51,8 @@
 				function($uri_parts) {
 
 					$module_name = array_shift($uri_parts);
-					\Axe\Controller::get('mod-axe-manager')->run(($method = array_shift($uri_parts)) ? $method : 'index' , array_merge($uri_parts , $_POST));
+					\Axe\Controller::get('mod-axe-manager')->run(($method = array_shift($uri_parts)) ? $method : 'index' ,
+						array_merge($uri_parts , $_POST));
 				}
 			);
 
@@ -62,7 +63,8 @@
 				function($uri_parts) {
 
 					$module_name = array_shift($uri_parts);
-					\Axe\Controller::get('mod-website/mod-design-package/demos')->run(($demo = array_shift($uri_parts)) ? 'demo' : 'index' , array_merge(array($demo) , $uri_parts , $_POST));
+					\Axe\Controller::get('mod-website/mod-design-package/demos')->run(($demo = array_shift($uri_parts)) ? 'demo' : 'index' ,
+						array_merge([$demo] , $uri_parts , $_POST));
 				}
 			);
 
@@ -88,7 +90,7 @@
 
 					$method = array_shift($uri_parts);
 					$id = array_shift($uri_parts);
-					$method_args = array_merge(array($id) , $_POST);
+					$method_args = array_merge([$id] , $_POST);
 
 					\Axe\Controller::get('mod-website/mod-editable-content')->run($method , $method_args);
 				}
@@ -99,7 +101,8 @@
 				'.*' ,
 				'get' ,
 				function($uri_parts) {
-					\Axe\Controller::get('mod-' . $GLOBALS['axe_config']->default_module)->run(($method = array_shift($uri_parts)) ? $method : 'index' , $uri_parts);
+					\Axe\Controller::get('mod-' . $GLOBALS['axe_config']->default_module)->run(($method = array_shift($uri_parts)) ? $method : 'index' ,
+						$uri_parts);
 				}
 			);
 		}

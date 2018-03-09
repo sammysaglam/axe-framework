@@ -10,26 +10,26 @@
 		const TABLE_NAME = 'axe-editable_content';
 
 		public static function allowed_fields() {
-			return array(
+			return [
 				"unique_name" ,
 				"html" ,
 				"raw" ,
 				"allowed_user_groups" => UserGroup::get_allowed_fields()
-			);
+			];
 		}
 
 		public static function process_field($field) {
 
 			if ( $field == 'allowed_user_groups' ) {
-				return array(
-					"where"  => array(
+				return [
+					"where"  => [
 						"sql"    => 'id IN (SELECT `user_group` FROM `axe-editable_content-allowed_user_groups` WHERE `editable_content` = ?)' ,
-						"params" => array('$id')
-					) ,
-					"fields" => array(
+						"params" => ['$id']
+					] ,
+					"fields" => [
 						"name"
-					)
-				);
+					]
+				];
 			}
 
 			return true;
@@ -58,7 +58,7 @@
 		}
 
 		public function update_content($html , $raw) {
-			new \Axe\DBQuery('UPDATE `' . self::TABLE_NAME . '` SET html = ? , raw = ? WHERE id = ? ;' , array($html , json_encode($raw) , $this->id));
+			new \Axe\DBQuery('UPDATE `' . self::TABLE_NAME . '` SET html = ? , raw = ? WHERE id = ? ;' , [$html , json_encode($raw) , $this->id]);
 			$this->html = $html;
 			$this->raw = $raw;
 		}

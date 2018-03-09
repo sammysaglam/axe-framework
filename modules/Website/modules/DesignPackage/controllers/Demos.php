@@ -25,17 +25,17 @@
 		}
 
 		public function index() {
-			return $this->get_view("demos/demo_website" , array(
+			return $this->get_view("demos/demo_website" , [
 				"html_head" => $this->html_head ,
 				"page"      => $this->get_view('demos/index')
-			));
+			]);
 		}
 
 		public function demo($demo_name) {
-			return $this->get_view("demos/demo_website" , array(
+			return $this->get_view("demos/demo_website" , [
 				"html_head" => $this->html_head ,
 				"page"      => $this->get_view('demos/' . $demo_name)
-			));
+			]);
 		}
 
 	}

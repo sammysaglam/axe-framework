@@ -54,10 +54,10 @@
 			\Axe\CSRF::generate_new_token();
 
 			// create user
-			\Auth\User::create_new(array(
+			\Auth\User::create_new([
 				"username" => $username ,
 				"password" => $password
-			));
+			]);
 		}
 
 	}

@@ -14,8 +14,8 @@
 		public function __construct($view_name , $view_path , $controller_raw_name , $params = null) {
 			$this->view_name = $view_name;
 			$this->view_path = $view_path;
-			$this->controller_raw_name = $controller_raw_name ;
-			$this->params = !empty($params) ? $params : array();
+			$this->controller_raw_name = $controller_raw_name;
+			$this->params = !empty($params) ? $params : [];
 
 			if ( !file_exists($this->view_path) ) {
 				throw new \Exception('View "' . $view_name . '" could not be found @' . "\n" . $this->view_path);
@@ -55,19 +55,19 @@
 		}
 
 		public function get_css_path($filename) {
-			return '/css/' . $this->controller_raw_name . '/' . $filename ;
+			return '/css/' . $this->controller_raw_name . '/' . $filename;
 		}
 
 		public function get_js_path($filename) {
-			return '/js/' . $this->controller_raw_name . '/' . $filename ;
+			return '/js/' . $this->controller_raw_name . '/' . $filename;
 		}
 
 		public function get_img_path($filename) {
-			return '/img/' . $this->controller_raw_name . '/' . $filename ;
+			return '/img/' . $this->controller_raw_name . '/' . $filename;
 		}
 
 		public function get_font_path($filename) {
-			return '/fonts/' . $this->controller_raw_name . '/' . $filename ;
+			return '/fonts/' . $this->controller_raw_name . '/' . $filename;
 		}
 
 		public function __toString() {

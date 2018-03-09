@@ -10,7 +10,7 @@
 		const TABLE_NAME = 'axe-comments';
 
 		public static function allowed_fields() {
-			return array(
+			return [
 				"search_key" ,
 				"date" ,
 				"author_uid" ,
@@ -20,31 +20,37 @@
 				"text" ,
 				"rating" ,
 				'user-$-vote'
-			);
+			];
 		}
 
 		public static function process_field($field) {
 
 			if ( $field == 'author' ) {
-				return array(
-					"where"  => array(
+				return [
+					"where"        => [
 						"sql"    => 'id = ?' ,
-						"params" => array('$author_uid')
-					) ,
-					"fields" => array(
+						"params" => ['$author_uid']
+					] ,
+					"fields"       => [
 						"username"
-					) ,
+					] ,
 					"return_first" => true
-				);
+				];
 
 			} else if ( preg_match('/user-\$([0-9]+)-vote/' , $field , $matches) ) {
 
-				return 'IFNULL((SELECT vote FROM `axe-comment-votes` WHERE comment_id = `axe-comments`.id AND user_id = "' . $matches[1] . '"),0) AS `user-' . $matches[1] . '-vote`';
+				return 'IFNULL((SELECT vote FROM `axe-comment-votes` WHERE comment_id = `axe-comments`.id AND user_id = "' .
+				       $matches[1] .
+				       '"),0) AS `user-' .
+				       $matches[1] .
+				       '-vote`';
 
 			} else if ( preg_match('/\$current_user-vote/' , $field , $matches) ) {
 
 				if ( $currently_logged_in_user = \Auth::get_logged_in_user() ) {
-					return 'IFNULL((SELECT vote FROM `axe-comment-votes` WHERE comment_id = `axe-comments`.id AND user_id = "' . $currently_logged_in_user->id . '"),0) AS `current_user-vote`';
+					return 'IFNULL((SELECT vote FROM `axe-comment-votes` WHERE comment_id = `axe-comments`.id AND user_id = "' .
+					       $currently_logged_in_user->id .
+					       '"),0) AS `current_user-vote`';
 
 				} else {
 					return '0 AS `current_user-vote`';
@@ -86,7 +92,7 @@
 					id = ?             # (7)
 				;
 				
-			" , array(
+			" , [
 				$this->id , // (1)
 				$user_id ,  // (2)
 				$this->id , // (3)
@@ -94,7 +100,7 @@
 				$this->id , // (5)
 				$this->id , // (6)
 				$this->id   // (7)
-			));
+			]);
 
 			$this->rating = intval($query->results()[0]->rating);
 		}
@@ -121,13 +127,13 @@
 					id = ?             # (5)
 				;
 				
-			" , array(
+			" , [
 				$this->id , // (1)
 				$user_id ,  // (2)
 				$this->id , // (3)
 				$this->id , // (4)
 				$this->id   // (5)
-			));
+			]);
 
 			$this->rating = intval($query->results()[0]->rating);
 		}
@@ -163,7 +169,7 @@
 					id = ?             # (7)
 				;
 				
-			" , array(
+			" , [
 				$this->id , // (1)
 				$user_id ,  // (2)
 				$this->id , // (3)
@@ -171,7 +177,7 @@
 				$this->id , // (5)
 				$this->id , // (6)
 				$this->id   // (7)
-			));
+			]);
 
 			$this->rating = intval($query->results()[0]->rating);
 		}
@@ -198,13 +204,13 @@
 					id = ?             # (5)
 				;
 				
-			" , array(
+			" , [
 				$this->id , // (1)
 				$user_id ,  // (2)
 				$this->id , // (3)
 				$this->id , // (4)
 				$this->id   // (5)
-			));
+			]);
 
 			$this->rating = intval($query->results()[0]->rating);
 		}

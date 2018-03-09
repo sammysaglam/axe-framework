@@ -16,8 +16,9 @@
 		}
 
 		public function &__get($key) {
-			$val = isset_or($this->$key,null);
-			return $val ;
+			$val = isset_or($this->$key , null);
+
+			return $val;
 		}
 
 		public function __set($key , $val) {

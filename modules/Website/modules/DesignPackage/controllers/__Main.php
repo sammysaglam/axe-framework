@@ -1,6 +1,6 @@
 <?php
 
-	namespace Website\DesignPackage\Controllers ;
+	namespace Website\DesignPackage\Controllers;
 
 	use Axe\Controller;
 

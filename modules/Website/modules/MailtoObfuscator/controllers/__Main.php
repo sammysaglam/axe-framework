@@ -11,12 +11,12 @@
 
 			$obfuscator = new MailtoObfuscator($email_address , $label);
 
-			return $this->get_view('mailto_link' , array(
+			return $this->get_view('mailto_link' , [
 				"coded"                  => $obfuscator->coded ,
 				"cipher"                 => $obfuscator->cipher ,
 				"label"                  => $label ,
 				"is_label_same_as_email" => ($label == $email_address || $label === 'same-as-email')
-			));
+			]);
 		}
 
 	}
