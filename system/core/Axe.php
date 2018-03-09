@@ -153,11 +153,6 @@
 			spl_autoload_register(
 				function($class_name_fully_qualified) {
 
-					// check if DBQuery
-					if ( $class_name_fully_qualified === 'Axe\DBQuery' ) {
-						echo 'test';
-					}
-
 					// get parts
 					$parts = explode('\\' , $class_name_fully_qualified);
 					$class_name = array_pop($parts);
