@@ -1,4 +1,11 @@
 <code_scheme name="axe-framework" version="173">
+  <option name="OTHER_INDENT_OPTIONS">
+    <value>
+      <option name="INDENT_SIZE" value="3" />
+      <option name="TAB_SIZE" value="3" />
+      <option name="USE_TAB_CHARACTER" value="true" />
+    </value>
+  </option>
   <option name="LINE_SEPARATOR" value="&#xA;" />
   <option name="RIGHT_MARGIN" value="155" />
   <option name="FORMATTER_TAGS_ENABLED" value="true" />
@@ -40,6 +47,7 @@
     <option name="ALIGN_CLASS_CONSTANTS" value="true" />
     <option name="SPACE_BEFORE_UNARY_NOT" value="true" />
     <option name="SPACE_BEFORE_CLOSURE_LEFT_PARENTHESIS" value="false" />
+    <option name="FORCE_SHORT_DECLARATION_ARRAY_STYLE" value="true" />
     <option name="SPACE_AROUND_ASSIGNMENT_IN_DECLARE" value="true" />
     <option name="SPACE_AFTER_COLON_IN_RETURN_TYPE" value="false" />
   </PHPCodeStyleSettings>
