@@ -211,11 +211,12 @@ npm install react-login-panel --save
 		{
 			id:'subscribe-to-newsletter',
 			defaultValue:false,
-			element:({onChange , value}) => (
+			element:({onChange , value, disabled}) => (
 				<div>
 					<input
 						type="checkbox"
 						checked={value}
+						disabled={disabled}
 						onChange={({target}) => onChange(target.checked)}
 					/>
 					{" "} Subscribe to newsletter
