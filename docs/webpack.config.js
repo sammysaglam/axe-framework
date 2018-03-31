@@ -198,7 +198,7 @@ module.exports = env => {
 				react: path.resolve('node_modules/react'),
 				'react-dom': path.resolve('node_modules/react-dom'),
 				'prop-types$': path.join(__dirname, 'node_modules/axe-prop-types'),
-				'../prop-types$': path.join(__dirname, 'node_modules/prop-types'),
+				'../prop-types/factoryWithTypeCheckers$': path.join(__dirname, 'node_modules/prop-types/factoryWithTypeCheckers'),
 				prismjs: path.join(__dirname, 'node_modules/prismjs'),
 				remarkable: path.join(__dirname, 'node_modules/remarkable'),
 				'reduce-object': path.join(__dirname, 'node_modules/reduce-object'),
