@@ -70,7 +70,7 @@ const copyIndexHtmlFile = isHotLoaderEnv =>
 
 				const injectStylesheetTag = isHotLoaderEnv
 					? html
-					: html.replace(/<\/head>/, '<link rel="stylesheet" href="bundle.css"/>');
+					: html.replace(/<\/head>/, '<link rel="stylesheet" href="/bundle.css"/>');
 
 				const minify = HTMLMinifier.minify(injectStylesheetTag, {
 					collapseWhitespace: true,
