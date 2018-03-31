@@ -56,9 +56,35 @@ const copyFiles = new CopyWebpackPlugin(
 		}
 	],
 	{
-		ignore: [{ glob: '**/_*/**' }, { glob: '**/_*' }, { glob: 'hot-loader/*' }]
-	}
+		ignore: [{ glob: '**/_*/**' }, { glob: '**/_*' }, 'index.html'],
+	},
 );
+
+const copyIndexHtmlFile = isHotLoaderEnv =>
+	new CopyWebpackPlugin([
+		{
+			from: 'src/index.html',
+			to: './index.html',
+			transform: fileContents => {
+				const html = fileContents.toString();
+
+				const injectStylesheetTag = isHotLoaderEnv
+					? html
+					: html.replace(/<\/head>/, '<link rel="stylesheet" href="bundle.css"/>');
+
+				const minify = HTMLMinifier.minify(injectStylesheetTag, {
+					collapseWhitespace: true,
+					collapseInlineTagWhitespace: true,
+					minifyCSS: true,
+					minifyJS: true,
+					removeComments: true,
+					removeRedundantAttributes: true,
+				});
+
+				return minify;
+			},
+		},
+	]);
 
 const extractCssGenerator = isHotLoaderEnv =>
 	new ExtractTextPlugin({
@@ -103,6 +129,7 @@ module.exports = env => {
 		plugins: [
 			extractCss,
 			copyFiles,
+			copyIndexHtmlFile(isHotLoaderEnv),
 			...(isHotLoaderEnv ? [copyHotLoaderFiles] : []),
 			...(isProduction
 				? [
