@@ -1,6 +1,7 @@
 ---
 imports:
     'ReactLoginPanel': '../../../docs/src/components/Pages/ModuleDocs/Auth/ReactLoginPanel/ReactLoginPanel.lazyLoaded'
+    'OriginalReactLoginPanel': '../../../docs/src/components/Pages/ModuleDocs/Auth/ReactLoginPanel/ReactLoginPanel'
 ---
 
 # <ReactLoginPanel />
@@ -240,3 +241,6 @@ npm install react-login-panel --save
 	toggleSignupForm={props.toggleSignupForm}
 />
 ```
+
+## PropTypes
+[PROPS_TABLE(OriginalReactLoginPanel)]
