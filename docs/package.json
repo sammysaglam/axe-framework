@@ -15,13 +15,13 @@
 		"test:coverage": "jest --coverage"
 	},
 	"dependencies": {
-		"axe-prop-types": "^1.0.5",
+		"axe-prop-types": "^1.0.6",
 		"object-filter": "^1.0.2",
 		"object.map": "^1.0.0",
 		"prismjs": "^1.11.0",
 		"react": "^16.2.0",
 		"react-dom": "^16.2.0",
-		"react-login-panel": "^1.1.2",
+		"react-login-panel": "^1.1.4",
 		"react-router-dom": "^4.2.2",
 		"reduce-object": "^0.1.3",
 		"regenerator": "^0.12.3",
