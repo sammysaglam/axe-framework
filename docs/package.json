@@ -21,14 +21,14 @@
 		"prismjs": "^1.11.0",
 		"react": "^16.2.0",
 		"react-dom": "^16.2.0",
-		"react-login-panel": "^1.1.1",
+		"react-login-panel": "^1.1.2",
 		"react-router-dom": "^4.2.2",
 		"reduce-object": "^0.1.3",
 		"regenerator": "^0.12.3",
 		"remarkable": "^1.7.1"
 	},
 	"devDependencies": {
-		"axe-markdown-loader": "^1.0.14",
+		"axe-markdown-loader": "^1.1.2",
 		"babel-core": "^6.26.0",
 		"babel-jest": "^22.1.0",
 		"babel-loader": "^7.1.2",

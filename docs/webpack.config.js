@@ -169,6 +169,7 @@ module.exports = env => {
 				'../prop-types$': path.join(__dirname, 'node_modules/prop-types'),
 				prismjs: path.join(__dirname, 'node_modules/prismjs'),
 				remarkable: path.join(__dirname, 'node_modules/remarkable'),
+				'reduce-object': path.join(__dirname, 'node_modules/reduce-object'),
 				'react-login-panel': path.resolve('node_modules/react-login-panel/src/ReactLoginPanel')
 				/* eslint-enable no-undef */
 			}
