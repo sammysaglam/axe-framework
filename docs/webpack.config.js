@@ -202,7 +202,8 @@ module.exports = env => {
 				prismjs: path.join(__dirname, 'node_modules/prismjs'),
 				remarkable: path.join(__dirname, 'node_modules/remarkable'),
 				'reduce-object': path.join(__dirname, 'node_modules/reduce-object'),
-				'react-login-panel': path.resolve('node_modules/react-login-panel/src/ReactLoginPanel')
+				'react-login-panel': path.resolve('node_modules/react-login-panel/src/ReactLoginPanel'),
+				'react-booking-system': path.resolve('node_modules/react-booking-system/src/ReactBookingSystem')
 				/* eslint-enable no-undef */
 			}
 		},

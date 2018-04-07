@@ -6,6 +6,8 @@ import AuthModels from '../../../../../modules/Auth/models/README.md';
 import AuthViews from './Auth/AuthViews';
 import AuthControllers from '../../../../../modules/Auth/controllers/README.md';
 
+import BookingViews from '../../../../../modules/Booking/views/README.md';
+
 const ModuleDocs = () => (
 	<DocumentationPage
 		baseUrl="/modules"
@@ -22,6 +24,12 @@ const ModuleDocs = () => (
 				{
 					label: 'Controllers',
 					view: <AuthControllers />
+				}
+			] ,
+			Booking: [
+				{
+					label: 'Views',
+					view: <BookingViews />
 				}
 			]
 		}}

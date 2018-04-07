@@ -26,3 +26,7 @@
 	path = modules/Website/modules/Documentation/modules/AxePropTypes
 	url = https://github.com/sammysaglam/axe-prop-types
 	ignore = dirty
+[submodule "modules/Booking/views/_booking-system-package"]
+	path = modules/Booking/views/_booking-system-package
+	url = https://github.com/sammysaglam/react-booking-system
+	ignore = dirty
