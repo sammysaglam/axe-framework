@@ -154,7 +154,6 @@ module.exports = env => {
 			rules: [
 				{
 					test: /\.js$/,
-					exclude: /node_modules/,
 					use: [
 						{
 							loader:'babel-loader' ,
@@ -199,9 +198,10 @@ module.exports = env => {
 				'react-dom': path.resolve('node_modules/react-dom'),
 				'prop-types$': path.join(__dirname, 'node_modules/axe-prop-types'),
 				'../prop-types/factoryWithTypeCheckers$': path.join(__dirname, 'node_modules/prop-types/factoryWithTypeCheckers'),
-				prismjs: path.join(__dirname, 'node_modules/prismjs'),
 				remarkable: path.join(__dirname, 'node_modules/remarkable'),
 				'reduce-object': path.join(__dirname, 'node_modules/reduce-object'),
+				'stylis': path.join(__dirname, 'node_modules/stylis'),
+				'buble': path.join(__dirname, 'node_modules/buble'),
 				'react-login-panel': path.resolve('node_modules/react-login-panel/src/ReactLoginPanel')
 				/* eslint-enable no-undef */
 			}

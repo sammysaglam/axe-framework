@@ -12,11 +12,11 @@ npm install react-login-panel --save
 ```
 
 ## Full-Featured Demo
-```jsx show-source
+```jsx show-source no-line-numbers
 <ReactLoginPanel
 	areFormTitlesVisible={true}
-	isLoginFormVisible={props.isLoginFormVisible}
-	isSignupFormVisible={props.isSignupFormVisible}
+	isLoginFormVisible={#{props.isLoginFormVisible}}
+	isSignupFormVisible={#{props.isSignupFormVisible}}
 	loggingIn={false}
 	loginFailed={false}
 	loginFormFields={[
