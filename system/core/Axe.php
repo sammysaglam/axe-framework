@@ -61,7 +61,7 @@
 				0 ,
 				'/' ,
 				null ,
-				$_SERVER['HTTPS'] === 'on' ,
+				!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ,
 				true
 			);
 
